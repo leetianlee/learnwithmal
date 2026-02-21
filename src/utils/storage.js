@@ -1,8 +1,19 @@
 import { db } from '../firebase'
-import { ref, set, get } from 'firebase/database'
+import { ref, set, get, onValue } from 'firebase/database'
 
 const STORAGE_KEY = 'learnwithmal'
 const FIREBASE_USER = 'malcolm'
+
+// Flag to prevent write loops: when we receive a Firebase update,
+// we save to localStorage but don't want that to re-trigger a Firebase write.
+let _ignoreNextSave = false
+
+// Callback to re-render the app when Firebase pushes new data
+let _onCloudUpdate = null
+
+export function setOnCloudUpdate(callback) {
+  _onCloudUpdate = callback
+}
 
 // ── localStorage (instant, offline) ──
 
@@ -60,7 +71,9 @@ export const loadData = (key) => {
 
 export const saveData = (key, value) => {
   localSave(key, value)
-  firebaseSave(key, value)
+  if (!_ignoreNextSave) {
+    firebaseSave(key, value)
+  }
 }
 
 export const clearData = (key) => {
@@ -69,60 +82,89 @@ export const clearData = (key) => {
   } catch {
     // ignore
   }
-  firebaseSave(key, null)
+  if (!_ignoreNextSave) {
+    firebaseSave(key, null)
+  }
 }
 
 /**
  * One-time sync on app startup.
- * Accepts optional debug logger for on-screen diagnostics.
+ * Pulls cloud data if it has more sessions, otherwise pushes local data.
+ * Then starts a real-time listener for live updates from other devices.
  */
-export async function firebaseSync(log = () => {}) {
+export async function firebaseSync() {
   const keys = ['progress', 'sessions', 'settings', 'wrongAnswers', 'hintUsages']
 
   try {
-    log('[sync] reading cloud sessions...')
     const cloudSessions = await firebaseLoad('sessions')
     const localSessions = localLoad('sessions')
 
     const cloudTotal = cloudSessions?.totalSessions || 0
     const localTotal = localSessions?.totalSessions || 0
 
-    log('[sync] cloud=' + cloudTotal + ' local=' + localTotal)
-
-    if (cloudTotal > localTotal) {
-      log('[sync] cloud wins — pulling all keys...')
+    if (cloudTotal > localTotal || (cloudTotal > 0 && localTotal === 0)) {
+      // Cloud has more progress → pull everything to local
       for (const key of keys) {
         const cloudVal = await firebaseLoad(key)
         if (cloudVal != null) {
           localSave(key, cloudVal)
-          log('[sync] pulled: ' + key)
         }
       }
-      return 'cloud'
     } else if (localTotal > 0) {
-      log('[sync] local wins — pushing to cloud...')
+      // Local has more (or equal) progress → push to cloud
       for (const key of keys) {
         const localVal = localLoad(key)
         if (localVal != null) {
           firebaseSave(key, localVal)
         }
       }
-      return 'local'
-    } else if (cloudTotal > 0) {
-      log('[sync] fresh device + cloud has data — pulling...')
+    }
+  } catch {
+    // Firebase not available — localStorage still works
+  }
+
+  // Start real-time listener for live cross-device sync
+  startRealtimeSync(keys)
+
+  return 'done'
+}
+
+/**
+ * Real-time listener: when ANY device writes to Firebase,
+ * all other open devices receive the update and apply it to localStorage.
+ */
+function startRealtimeSync(keys) {
+  try {
+    const userRef = ref(db, `users/${FIREBASE_USER}`)
+    onValue(userRef, (snapshot) => {
+      if (!snapshot.exists()) return
+      const data = snapshot.val()
+
+      // Apply each key from Firebase to localStorage
+      _ignoreNextSave = true
+      let changed = false
       for (const key of keys) {
-        const cloudVal = await firebaseLoad(key)
-        if (cloudVal != null) {
-          localSave(key, cloudVal)
-          log('[sync] pulled: ' + key)
+        if (data[key] != null) {
+          const val = typeof data[key] === 'string'
+            ? (() => { try { return JSON.parse(data[key]) } catch { return data[key] } })()
+            : data[key]
+
+          // Only update if the cloud value is different from local
+          const localVal = localLoad(key)
+          if (JSON.stringify(val) !== JSON.stringify(localVal)) {
+            localSave(key, val)
+            changed = true
+          }
         }
       }
-      return 'cloud'
-    } else {
-      log('[sync] both empty — nothing to sync')
-    }
-  } catch (e) {
-    log('[sync] ERROR: ' + (e?.message || e))
+      _ignoreNextSave = false
+
+      // If data changed, trigger a re-render
+      if (changed && _onCloudUpdate) {
+        _onCloudUpdate()
+      }
+    }, { onlyOnce: false })
+  } catch {
+    // Firebase listener failed — that's fine, one-time sync already worked
   }
-  return 'none'
 }
