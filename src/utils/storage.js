@@ -76,7 +76,7 @@ export const clearData = (key) => {
  * One-time sync on app startup.
  * Accepts optional debug logger for on-screen diagnostics.
  */
-export async function firebaseSync(log = console.log) {
+export async function firebaseSync(log = () => {}) {
   const keys = ['progress', 'sessions', 'settings', 'wrongAnswers', 'hintUsages']
 
   try {
