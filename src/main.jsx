@@ -6,21 +6,25 @@ import { firebaseSync } from './utils/storage'
 
 const root = createRoot(document.getElementById('root'))
 
-// Render immediately (using localStorage data)
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+// Sync with Firebase FIRST, then render.
+// On new devices this pulls cloud data into localStorage before React reads it.
+// Timeout ensures we don't block forever if Firebase is slow/offline.
+const syncWithTimeout = Promise.race([
+  firebaseSync(),
+  new Promise(resolve => setTimeout(() => resolve('timeout'), 3000))
+])
 
-// Then sync with Firebase in background — if cloud has newer data, re-render
-firebaseSync().then((source) => {
-  if (source === 'cloud') {
-    // Cloud had newer data that's now in localStorage — re-render to pick it up
-    root.render(
-      <StrictMode>
-        <App />
-      </StrictMode>,
-    )
-  }
+syncWithTimeout.then(() => {
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+}).catch(() => {
+  // Firebase failed — render anyway using localStorage
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
 })

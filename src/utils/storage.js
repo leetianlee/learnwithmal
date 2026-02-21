@@ -24,6 +24,8 @@ function localSave(key, value) {
 }
 
 // ── Firebase (cross-device sync) ──
+// Firebase stores data as JSON but converts arrays to objects with numeric keys.
+// We store as a JSON string to preserve arrays exactly.
 
 function firebasePath(key) {
   return `users/${FIREBASE_USER}/${key}`
@@ -31,7 +33,8 @@ function firebasePath(key) {
 
 function firebaseSave(key, value) {
   try {
-    set(ref(db, firebasePath(key)), value).catch(() => {
+    // Store as JSON string to avoid Firebase array-to-object conversion
+    set(ref(db, firebasePath(key)), JSON.stringify(value)).catch(() => {
       // Silently fail — offline is fine, localStorage still works
     })
   } catch {
@@ -42,7 +45,14 @@ function firebaseSave(key, value) {
 async function firebaseLoad(key) {
   try {
     const snapshot = await get(ref(db, firebasePath(key)))
-    return snapshot.exists() ? snapshot.val() : null
+    if (!snapshot.exists()) return null
+    const val = snapshot.val()
+    // Data is stored as JSON string — parse it back
+    if (typeof val === 'string') {
+      try { return JSON.parse(val) } catch { return val }
+    }
+    // Legacy: if data was stored as object (before this fix), return as-is
+    return val
   } catch {
     return null
   }
@@ -52,7 +62,7 @@ async function firebaseLoad(key) {
 
 /**
  * Load data: returns localStorage immediately.
- * On first app load, firebaseSync() merges cloud data in.
+ * On first app load, firebaseSync() pulls cloud data into localStorage.
  */
 export const loadData = (key) => {
   return localLoad(key)
@@ -91,17 +101,21 @@ export async function firebaseSync() {
     const cloudTotal = cloudSessions?.totalSessions || 0
     const localTotal = localSessions?.totalSessions || 0
 
+    console.log('[sync] cloud sessions:', cloudTotal, 'local sessions:', localTotal)
+
     if (cloudTotal > localTotal) {
       // Cloud has more progress → pull everything to local
+      console.log('[sync] pulling from cloud')
       for (const key of keys) {
         const cloudVal = await firebaseLoad(key)
         if (cloudVal != null) {
           localSave(key, cloudVal)
         }
       }
-      return 'cloud' // signal that we loaded from cloud
+      return 'cloud'
     } else if (localTotal > 0) {
       // Local has more (or equal) progress → push to cloud
+      console.log('[sync] pushing to cloud')
       for (const key of keys) {
         const localVal = localLoad(key)
         if (localVal != null) {
@@ -109,9 +123,19 @@ export async function firebaseSync() {
         }
       }
       return 'local'
+    } else if (cloudTotal > 0) {
+      // Edge case: both are 0 locally but cloud has data
+      console.log('[sync] pulling from cloud (fresh device)')
+      for (const key of keys) {
+        const cloudVal = await firebaseLoad(key)
+        if (cloudVal != null) {
+          localSave(key, cloudVal)
+        }
+      }
+      return 'cloud'
     }
-  } catch {
-    // Firebase not available — that's fine, localStorage still works
+  } catch (e) {
+    console.warn('[sync] Firebase sync failed:', e)
   }
   return 'none'
 }
