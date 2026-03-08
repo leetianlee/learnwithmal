@@ -1,5 +1,6 @@
 import MultipleChoiceQuestion from './MultipleChoiceQuestion'
 import FillInBlankQuestion from './FillInBlankQuestion'
+import OrderingQuestion from './OrderingQuestion'
 import AudioButton from './AudioButton'
 import ClockFace from '../visuals/ClockFace'
 import { Coin, Note } from '../visuals/CurrencyVisuals'
@@ -15,6 +16,14 @@ export default function QuestionRenderer({ question, onAnswer, feedback, showHin
 
   const renderQuestion = () => {
     switch (question.type) {
+      case 'ordering':
+        return (
+          <OrderingQuestion
+            question={question}
+            onAnswer={onAnswer}
+            feedback={feedback}
+          />
+        )
       case 'fillInBlank':
         return (
           <FillInBlankQuestion

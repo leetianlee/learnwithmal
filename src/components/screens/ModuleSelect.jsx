@@ -45,6 +45,7 @@ const MODULE_ACCENT_COLORS = {
   askingForHelp: '#FDF3E4',
   readingComprehension: '#E8F5EB',
   workplaceWords: '#E8F6F7',
+  sentenceBuilding: '#E8F5EB',
   workSkills: '#FDE8D0',
 }
 

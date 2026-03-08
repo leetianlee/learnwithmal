@@ -11,6 +11,7 @@ export const MODULES = {
     { id: 'askingForHelp', name: 'Asking for Help', icon: 'MessageCircle', maxLevel: 8, description: 'How to ask for help' },
     { id: 'readingComprehension', name: 'Reading', icon: 'BookOpen', maxLevel: 6, description: 'Read and understand passages' },
     { id: 'workplaceWords', name: 'Workplace Words', icon: 'Briefcase', maxLevel: 8, description: 'Hotel and workplace vocabulary' },
+    { id: 'sentenceBuilding', name: 'Sentences', icon: 'AlignLeft', maxLevel: 8, description: 'Build sentences in order' },
   ],
   life: [
     { id: 'workSkills', name: 'Work Skills', icon: 'Building2', maxLevel: 6, description: 'Hotel tasks and workplace scenarios' },
