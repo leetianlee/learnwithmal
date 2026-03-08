@@ -10,6 +10,7 @@ export const MODULES = {
     { id: 'greetings', name: 'Greetings', icon: '👋', maxLevel: 8, description: 'Hello and workplace phrases' },
     { id: 'askingForHelp', name: 'Asking for Help', icon: '🗣️', maxLevel: 8, description: 'How to ask for help' },
     { id: 'readingComprehension', name: 'Reading', icon: '📖', maxLevel: 6, description: 'Read and understand passages' },
+    { id: 'workplaceWords', name: 'Workplace Words', icon: '💼', maxLevel: 8, description: 'Hotel and workplace vocabulary' },
   ],
   life: [
     { id: 'workSkills', name: 'Work Skills', icon: '🏨', maxLevel: 6, description: 'Hotel tasks and workplace scenarios' },
