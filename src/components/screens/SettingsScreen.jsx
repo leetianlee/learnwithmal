@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSettings } from '../../context/SettingsContext'
 import { useProgress } from '../../context/ProgressContext'
+import { ArrowLeft } from 'lucide-react'
 import Button from '../common/Button'
 import Card from '../common/Card'
 import Modal from '../common/Modal'
@@ -37,8 +38,8 @@ export default function SettingsScreen() {
   return (
     <div className="min-h-screen flex flex-col p-6 max-w-2xl mx-auto w-full">
       <div className="flex items-center gap-3 mb-6">
-        <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
-          ← Back
+        <Button variant="ghost" size="sm" onClick={() => navigate('/')} className="flex items-center gap-1">
+          <ArrowLeft size={16} /> Back
         </Button>
         <h1 className="text-2xl font-bold">Settings</h1>
       </div>

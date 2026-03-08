@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useProgress } from '../../context/ProgressContext'
 import { computeAchievements, CATEGORY_LABELS, CATEGORY_ORDER } from '../../data/achievements'
+import { ArrowLeft } from 'lucide-react'
 
 function AchievementCard({ achievement }) {
   const { icon, title, description, earned, date } = achievement
@@ -62,7 +63,7 @@ export default function AchievementsScreen() {
           className="w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-sm font-bold text-[var(--color-text-light)] hover:bg-[var(--color-bg)] active:scale-95 transition-all flex-shrink-0"
           aria-label="Back to home"
         >
-          ←
+          <ArrowLeft size={18} />
         </button>
         <div className="flex-1">
           <h1 className="text-2xl font-extrabold text-[var(--color-text)]">My Achievements</h1>

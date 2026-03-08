@@ -2,14 +2,20 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useProgress } from '../../context/ProgressContext'
 import { useSettings } from '../../context/SettingsContext'
 import { MODULES } from '../../data/moduleMetadata'
+import ModuleIcon from '../visuals/ModuleIcon'
+import { ArrowLeft, Star, Calculator, BookOpen, Building2 } from 'lucide-react'
 
 function StarRating({ stars }) {
   return (
     <div className="flex gap-0.5 justify-center">
       {[1, 2, 3].map(i => (
-        <span key={i} className={`text-xl ${i <= stars ? 'text-yellow-400' : 'text-[var(--color-disabled)] opacity-40'}`}>
-          {i <= stars ? '★' : '☆'}
-        </span>
+        <Star
+          key={i}
+          size={20}
+          className={i <= stars ? 'text-yellow-400' : 'text-[var(--color-disabled)] opacity-40'}
+          fill={i <= stars ? 'currentColor' : 'none'}
+          strokeWidth={2}
+        />
       ))}
     </div>
   )
@@ -38,11 +44,20 @@ const MODULE_ACCENT_COLORS = {
   greetings: '#F0E6F6',
   askingForHelp: '#FDF3E4',
   readingComprehension: '#E8F5EB',
+  workplaceWords: '#E8F6F7',
+  workSkills: '#FDE8D0',
+}
+
+const SUBJECT_ICONS = {
+  math: Calculator,
+  english: BookOpen,
+  life: Building2,
 }
 
 const SUBJECT_INFO = {
-  math: { emoji: '🧮', label: 'Math' },
-  english: { emoji: '📚', label: 'English' },
+  math: { label: 'Math' },
+  english: { label: 'English' },
+  life: { label: 'Life Skills' },
 }
 
 export default function ModuleSelect() {
@@ -51,7 +66,8 @@ export default function ModuleSelect() {
   const { getModuleProgress } = useProgress()
   const { settings } = useSettings()
   const modules = MODULES[subject] || []
-  const subjectInfo = SUBJECT_INFO[subject] || { emoji: '📖', label: subject }
+  const subjectInfo = SUBJECT_INFO[subject] || { label: subject }
+  const SubjectIcon = SUBJECT_ICONS[subject] || BookOpen
 
   // Find the suggested module: lowest mastery, then least recently practiced
   const suggestedId = settings.suggestedModuleEnabled ? (() => {
@@ -81,10 +97,10 @@ export default function ModuleSelect() {
             className="w-10 h-10 rounded-full bg-[var(--color-bg)] hover:bg-[var(--color-bg-hover)] active:scale-95 transition-all flex items-center justify-center text-sm font-bold text-[var(--color-text-light)] flex-shrink-0"
             aria-label="Go back"
           >
-            ←
+            <ArrowLeft size={18} />
           </button>
-          <h1 className="text-2xl font-extrabold text-[var(--color-text)]">
-            <span className="mr-2">{subjectInfo.emoji}</span>
+          <h1 className="text-2xl font-extrabold text-[var(--color-text)] flex items-center gap-2">
+            <SubjectIcon size={24} className="text-[var(--color-primary)]" />
             {subjectInfo.label}
           </h1>
         </div>
@@ -115,10 +131,10 @@ export default function ModuleSelect() {
 
                 {/* Icon with colored background */}
                 <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center text-4xl mb-2"
+                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-2"
                   style={{ background: accentColor }}
                 >
-                  {mod.icon}
+                  <ModuleIcon name={mod.icon} size={28} className="text-[var(--color-text)]" />
                 </div>
 
                 {/* Module Name */}

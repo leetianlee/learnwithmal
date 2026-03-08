@@ -5,6 +5,7 @@ import { computeAchievements } from '../../data/achievements'
 import { computeStickers } from '../../data/stickers'
 import { MODULES } from '../../data/moduleMetadata'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
+import { Flame, Trophy, Gift, ClipboardList, Calculator, BookOpen, Building2, MessageSquare, Sparkles, CheckCircle, ArrowRight } from 'lucide-react'
 
 /** Compute average level per subject and return a gentle encouragement message */
 function getEncouragement(progress) {
@@ -30,7 +31,7 @@ function getEncouragement(progress) {
   // Don't show if gap is very small (balanced learner)
   const gap = strongest[1] - weakest[1]
   if (gap < 1.5) {
-    return { icon: '\u{1F31F}', text: 'You\'re doing great across all subjects!' }
+    return { icon: 'sparkles', text: 'You\'re doing great across all subjects!' }
   }
 
   const names = { math: 'Math', english: 'English', life: 'Life Skills' }
@@ -46,7 +47,7 @@ function getEncouragement(progress) {
 
   // Pick a consistent message per day (not random per render)
   const dayIndex = new Date().getDate() % messages.length
-  return { icon: '\u{1F4AC}', text: messages[dayIndex] }
+  return { icon: 'message', text: messages[dayIndex] }
 }
 
 export default function HomeScreen() {
@@ -73,7 +74,7 @@ export default function HomeScreen() {
         <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
           {streak > 0 && (
             <div className="inline-flex items-center gap-2 bg-[var(--color-incorrect-light)] px-4 py-1.5 rounded-full">
-              <span className="text-lg">🔥</span>
+              <Flame size={18} className="text-[var(--color-incorrect)]" />
               <span className="text-sm font-bold text-[var(--color-incorrect)]">
                 {streak} day{streak !== 1 ? 's' : ''} in a row!
               </span>
@@ -83,7 +84,7 @@ export default function HomeScreen() {
             onClick={() => navigate('/achievements')}
             className="inline-flex items-center gap-1.5 bg-[var(--color-primary-light)] px-4 py-1.5 rounded-full hover:bg-[var(--color-primary)] hover:text-white transition-all active:scale-95 group"
           >
-            <span className="text-lg">🏆</span>
+            <Trophy size={18} className="text-[var(--color-primary)] group-hover:text-white" />
             <span className="text-sm font-bold text-[var(--color-primary)] group-hover:text-white">
               {earnedCount}
             </span>
@@ -92,7 +93,7 @@ export default function HomeScreen() {
             onClick={() => navigate('/stickers')}
             className="inline-flex items-center gap-1.5 bg-[var(--color-incorrect-light)] px-4 py-1.5 rounded-full hover:bg-[var(--color-incorrect)] hover:text-white transition-all active:scale-95 group"
           >
-            <span className="text-lg">🎁</span>
+            <Gift size={18} className="text-[var(--color-incorrect)] group-hover:text-white" />
             <span className="text-sm font-bold text-[var(--color-incorrect)] group-hover:text-white">
               {stickerCount}
             </span>
@@ -175,7 +176,12 @@ export default function HomeScreen() {
       {/* Gentle Encouragement */}
       {encouragement && !allDone && (
         <div className="bg-white rounded-2xl shadow-card p-4 mb-4 flex items-start gap-3 animate-fade-in">
-          <span className="text-xl flex-shrink-0 mt-0.5">{encouragement.icon}</span>
+          <span className="flex-shrink-0 mt-0.5">
+            {encouragement.icon === 'sparkles'
+              ? <Sparkles size={20} className="text-[var(--color-primary)]" />
+              : <MessageSquare size={20} className="text-[var(--color-primary)]" />
+            }
+          </span>
           <p className="text-sm font-semibold text-[var(--color-text-light)] leading-relaxed">
             {encouragement.text}
           </p>
@@ -188,12 +194,12 @@ export default function HomeScreen() {
           onClick={() => navigate('/daily-plan')}
           className="w-full rounded-2xl bg-[var(--color-primary)] text-white shadow-card hover:bg-[var(--color-primary-dark)] active:scale-[0.98] transition-all p-4 mb-4 flex items-center justify-center gap-3"
         >
-          <span className="text-2xl">📋</span>
+          <ClipboardList size={24} className="flex-shrink-0" />
           <div className="text-left">
             <div className="text-lg font-extrabold">Start Today's Plan</div>
             <div className="text-xs opacity-80 font-medium">A balanced session picked for you</div>
           </div>
-          <span className="ml-auto text-xl font-bold">→</span>
+          <ArrowRight size={20} className="ml-auto" />
         </button>
       )}
 
@@ -204,8 +210,8 @@ export default function HomeScreen() {
           onClick={() => navigate('/modules/math')}
           className="w-full rounded-2xl bg-white shadow-card hover:shadow-card-hover active:scale-[0.98] transition-all p-4 flex items-center gap-4 group"
         >
-          <div className="w-14 h-14 rounded-xl bg-[#E8F6F7] flex items-center justify-center text-3xl group-hover:scale-110 transition-transform flex-shrink-0">
-            📐
+          <div className="w-14 h-14 rounded-xl bg-[#E8F6F7] flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+            <Calculator size={28} className="text-[var(--color-primary)]" />
           </div>
           <div className="text-left flex-1">
             <div className="text-lg font-extrabold text-[var(--color-text)]">Math</div>
@@ -216,7 +222,7 @@ export default function HomeScreen() {
               ? 'bg-[var(--color-correct)] text-white'
               : 'bg-[var(--color-bg)] text-[var(--color-text-light)]'
           }`}>
-            {mathDone ? '✓' : '→'}
+            {mathDone ? <CheckCircle size={16} /> : <ArrowRight size={16} />}
           </div>
         </button>
 
@@ -225,8 +231,8 @@ export default function HomeScreen() {
           onClick={() => navigate('/modules/english')}
           className="w-full rounded-2xl bg-white shadow-card hover:shadow-card-hover active:scale-[0.98] transition-all p-4 flex items-center gap-4 group"
         >
-          <div className="w-14 h-14 rounded-xl bg-[#F0E6F6] flex items-center justify-center text-3xl group-hover:scale-110 transition-transform flex-shrink-0">
-            📖
+          <div className="w-14 h-14 rounded-xl bg-[#F0E6F6] flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+            <BookOpen size={28} className="text-[#9B59B6]" />
           </div>
           <div className="text-left flex-1">
             <div className="text-lg font-extrabold text-[var(--color-text)]">English</div>
@@ -237,7 +243,7 @@ export default function HomeScreen() {
               ? 'bg-[var(--color-correct)] text-white'
               : 'bg-[var(--color-bg)] text-[var(--color-text-light)]'
           }`}>
-            {englishDone ? '✓' : '→'}
+            {englishDone ? <CheckCircle size={16} /> : <ArrowRight size={16} />}
           </div>
         </button>
 
@@ -246,8 +252,8 @@ export default function HomeScreen() {
           onClick={() => navigate('/modules/life')}
           className="w-full rounded-2xl bg-white shadow-card hover:shadow-card-hover active:scale-[0.98] transition-all p-4 flex items-center gap-4 group"
         >
-          <div className="w-14 h-14 rounded-xl bg-[#FDE8D0] flex items-center justify-center text-3xl group-hover:scale-110 transition-transform flex-shrink-0">
-            🏨
+          <div className="w-14 h-14 rounded-xl bg-[#FDE8D0] flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+            <Building2 size={28} className="text-[#E8A838]" />
           </div>
           <div className="text-left flex-1">
             <div className="text-lg font-extrabold text-[var(--color-text)]">Life Skills</div>
@@ -258,7 +264,7 @@ export default function HomeScreen() {
               ? 'bg-[var(--color-correct)] text-white'
               : 'bg-[var(--color-bg)] text-[var(--color-text-light)]'
           }`}>
-            {lifeDone ? '✓' : '→'}
+            {lifeDone ? <CheckCircle size={16} /> : <ArrowRight size={16} />}
           </div>
         </button>
       </div>

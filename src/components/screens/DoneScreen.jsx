@@ -5,17 +5,25 @@ import { useSettings } from '../../context/SettingsContext'
 import { playCelebrationSound } from '../../utils/soundEffects'
 import Button from '../common/Button'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
+import { Star, Lightbulb, Sparkles, PartyPopper, HandMetal, Dumbbell } from 'lucide-react'
 
 function getCongratulatoryMessage(percentage) {
   if (percentage === 100) {
-    return { text: 'Perfect!', emoji: '🌟', color: 'text-[#FF6B6B]' }
+    return { text: 'Perfect!', icon: 'sparkles', color: 'text-[#FF6B6B]' }
   } else if (percentage >= 80) {
-    return { text: 'Awesome!', emoji: '🎉', color: 'text-[var(--color-correct)]' }
+    return { text: 'Awesome!', icon: 'party', color: 'text-[var(--color-correct)]' }
   } else if (percentage >= 60) {
-    return { text: 'Good work!', emoji: '👏', color: 'text-[var(--color-primary)]' }
+    return { text: 'Good work!', icon: 'hand', color: 'text-[var(--color-primary)]' }
   } else {
-    return { text: 'Keep practicing!', emoji: '💪', color: 'text-[var(--color-text)]' }
+    return { text: 'Keep practicing!', icon: 'dumbbell', color: 'text-[var(--color-text)]' }
   }
+}
+
+const CONGRATS_ICONS = {
+  sparkles: Sparkles,
+  party: PartyPopper,
+  hand: HandMetal,
+  dumbbell: Dumbbell,
 }
 
 function ScoreRing({ percentage }) {
@@ -92,8 +100,8 @@ export default function DoneScreen() {
       </div>
 
       {/* Main heading */}
-      <h1 className="text-3xl font-extrabold mb-1 text-center animate-scale-in">
-        <span className="mr-2">{congrats.emoji}</span>
+      <h1 className="text-3xl font-extrabold mb-1 text-center animate-scale-in flex items-center justify-center gap-2">
+        {(() => { const Icon = CONGRATS_ICONS[congrats.icon]; return Icon ? <Icon size={28} className={congrats.color} /> : null })()}
         <span className={congrats.color}>{congrats.text}</span>
       </h1>
 
@@ -116,9 +124,13 @@ export default function DoneScreen() {
         {/* Star Rating */}
         <div className="flex justify-center gap-1.5 mb-4">
           {[1, 2, 3].map(i => (
-            <span key={i} className={`text-2xl ${i <= progress.stars ? 'text-yellow-400' : 'text-[var(--color-disabled)] opacity-40'}`}>
-              {i <= progress.stars ? '★' : '☆'}
-            </span>
+            <Star
+              key={i}
+              size={24}
+              className={i <= progress.stars ? 'text-yellow-400' : 'text-[var(--color-disabled)] opacity-40'}
+              fill={i <= progress.stars ? 'currentColor' : 'none'}
+              strokeWidth={2}
+            />
           ))}
         </div>
 
@@ -166,8 +178,9 @@ export default function DoneScreen() {
                       Correct answer: <span className="font-bold">{item.correctAnswer}</span>
                     </p>
                     {item.explanation && (
-                      <p className="text-xs text-[var(--color-text)] mt-1.5 bg-[var(--color-bg)] rounded-lg px-3 py-2 leading-relaxed">
-                        💡 {item.explanation}
+                      <p className="text-xs text-[var(--color-text)] mt-1.5 bg-[var(--color-bg)] rounded-lg px-3 py-2 leading-relaxed flex items-start gap-1.5">
+                        <Lightbulb size={12} className="flex-shrink-0 mt-0.5 text-[var(--color-primary)]" />
+                        {item.explanation}
                       </p>
                     )}
                   </div>

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useProgress } from '../../context/ProgressContext'
 import { useSettings } from '../../context/SettingsContext'
 import { MODULES } from '../../data/moduleMetadata'
+import { ArrowLeft, Calculator, BookOpen, Building2 } from 'lucide-react'
+import ModuleIcon from '../visuals/ModuleIcon'
 import Button from '../common/Button'
 import Card from '../common/Card'
 import Modal from '../common/Modal'
@@ -96,8 +98,8 @@ export default function ParentDashboard() {
   return (
     <div className="min-h-screen flex flex-col p-6 max-w-2xl mx-auto w-full">
       <div className="flex items-center gap-3 mb-6">
-        <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
-          ← Back
+        <Button variant="ghost" size="sm" onClick={() => navigate('/')} className="flex items-center gap-1">
+          <ArrowLeft size={16} /> Back
         </Button>
         <h1 className="text-2xl font-bold">Parent Dashboard</h1>
       </div>
@@ -107,7 +109,7 @@ export default function ParentDashboard() {
         onClick={() => navigate('/parent/guide')}
         className="w-full rounded-2xl bg-[var(--color-primary-light)] hover:bg-[var(--color-primary)] hover:text-white text-[var(--color-primary)] font-bold text-sm py-3 px-4 mb-4 transition-all flex items-center justify-center gap-2"
       >
-        📖 Parent's Guide — How to use this app
+        <BookOpen size={16} className="inline" /> Parent's Guide — How to use this app
       </button>
 
       {/* Overview Stats */}
@@ -138,21 +140,21 @@ export default function ParentDashboard() {
         <div className="space-y-3 pt-3 border-t border-[var(--color-bg)]">
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="font-semibold">📐 Math</span>
+              <span className="font-semibold flex items-center gap-1"><Calculator size={14} /> Math</span>
               <span className="text-[var(--color-text-light)]">{mathStats.accuracy}% ({mathStats.correct}/{mathStats.attempts})</span>
             </div>
             <MiniProgressBar percentage={mathStats.accuracy} color="var(--color-primary)" />
           </div>
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="font-semibold">📖 English</span>
+              <span className="font-semibold flex items-center gap-1"><BookOpen size={14} /> English</span>
               <span className="text-[var(--color-text-light)]">{englishStats.accuracy}% ({englishStats.correct}/{englishStats.attempts})</span>
             </div>
             <MiniProgressBar percentage={englishStats.accuracy} color="#9B59B6" />
           </div>
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="font-semibold">🏨 Life Skills</span>
+              <span className="font-semibold flex items-center gap-1"><Building2 size={14} /> Life Skills</span>
               <span className="text-[var(--color-text-light)]">{lifeStats.accuracy}% ({lifeStats.correct}/{lifeStats.attempts})</span>
             </div>
             <MiniProgressBar percentage={lifeStats.accuracy} color="#E8A838" />
@@ -172,7 +174,7 @@ export default function ParentDashboard() {
               <div key={`${mod.subject}-${mod.id}`} className="bg-[var(--color-bg)] rounded-xl p-3">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">{mod.icon}</span>
+                    <ModuleIcon name={mod.icon} size={18} className="text-[var(--color-primary)]" />
                     <span className="font-bold text-sm">{mod.name}</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -242,7 +244,7 @@ export default function ParentDashboard() {
                         </span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-[var(--color-text-light)]">
-                        <span>{mod?.icon} {mod?.name || item.moduleId}</span>
+                        <span className="flex items-center gap-1">{mod?.icon && <ModuleIcon name={mod.icon} size={12} />} {mod?.name || item.moduleId}</span>
                         <span className="ml-auto">
                           Answer: <strong className="text-[var(--color-correct)]">{item.correctAnswer}</strong>
                         </span>
@@ -297,7 +299,7 @@ export default function ParentDashboard() {
                         </span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-[var(--color-text-light)]">
-                        <span>{mod?.icon} {mod?.name || item.moduleId}</span>
+                        <span className="flex items-center gap-1">{mod?.icon && <ModuleIcon name={mod.icon} size={12} />} {mod?.name || item.moduleId}</span>
                         <span className="ml-auto">
                           {gotItRight
                             ? <span className="text-[var(--color-correct)] font-semibold">Got it right {item.correctCount}/{item.count}</span>

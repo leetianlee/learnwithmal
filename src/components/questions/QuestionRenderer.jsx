@@ -7,6 +7,7 @@ import { ChickenRice, Kopi, NasiLemak, Milo, FOOD_COMPONENTS } from '../visuals/
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
 import SpeakerIndicator from '../visuals/SpeakerIndicator'
 import ScheduleTable from '../visuals/ScheduleTable'
+import { WORKPLACE_VISUALS } from '../visuals/WorkplaceVisuals'
 
 export default function QuestionRenderer({ question, onAnswer, feedback, showHint, moduleId }) {
   if (!question) return null
@@ -172,6 +173,18 @@ function QuestionVisual({ question, moduleId }) {
         />
       </div>
     )
+  }
+
+  // Workplace Words: show SVG visual if question has an image field
+  if (moduleId === 'workplaceWords' && question.image) {
+    const Visual = WORKPLACE_VISUALS[question.image]
+    if (Visual) {
+      return (
+        <div className="mb-5 flex justify-center">
+          <Visual size={90} />
+        </div>
+      )
+    }
   }
 
   // Fallback: no visual

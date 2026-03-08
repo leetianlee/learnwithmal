@@ -4,6 +4,8 @@ import { useProgress } from '../../context/ProgressContext'
 import { useSettings } from '../../context/SettingsContext'
 import { useSpeech } from '../../hooks/useSpeech'
 import { getModule } from '../../data/moduleMetadata'
+import ModuleIcon from '../visuals/ModuleIcon'
+import { Lightbulb, CheckCircle, XCircle } from 'lucide-react'
 import { selectSessionQuestions } from '../../utils/questionSelector'
 import { SESSION } from '../../data/constants'
 import { playCorrectSound, playIncorrectSound } from '../../utils/soundEffects'
@@ -222,7 +224,7 @@ export default function PracticeScreen() {
               ✕
             </button>
             <div className="flex items-center gap-2">
-              <span className="text-lg">{mod?.icon}</span>
+              {mod?.icon && <ModuleIcon name={mod.icon} size={20} className="text-[var(--color-primary)]" />}
               <span className="font-extrabold text-sm text-[var(--color-text)]">{mod?.name}</span>
             </div>
             <div className="flex items-center gap-1 bg-[var(--color-primary-light)] text-[var(--color-primary)] px-3 py-1 rounded-full text-xs font-bold">
@@ -268,8 +270,9 @@ export default function PracticeScreen() {
               className="mt-3 px-5 py-3 bg-[var(--color-primary-light)] rounded-2xl text-center animate-slide-up"
               style={{ overflow: 'visible', wordBreak: 'break-word', whiteSpace: 'normal' }}
             >
-              <p className="text-sm text-[var(--color-primary)] font-semibold leading-relaxed">
-                💡 {currentQuestion.hint}
+              <p className="text-sm text-[var(--color-primary)] font-semibold leading-relaxed flex items-start gap-1.5">
+                <Lightbulb size={16} className="flex-shrink-0 mt-0.5" />
+                {currentQuestion.hint}
               </p>
             </div>
           )}
@@ -287,7 +290,12 @@ export default function PracticeScreen() {
                   <p className={`text-base font-extrabold ${
                     feedback === 'correct' ? 'text-[var(--color-correct)]' : 'text-[var(--color-incorrect)]'
                   }`}>
-                    {feedback === 'correct' ? '✓  Correct!' : '✗  Not quite'}
+                    <span className="inline-flex items-center gap-1.5">
+                      {feedback === 'correct'
+                        ? <><CheckCircle size={18} /> Correct!</>
+                        : <><XCircle size={18} /> Not quite</>
+                      }
+                    </span>
                   </p>
                   {feedback === 'incorrect' && (
                     <p className="text-sm mt-1 text-[var(--color-text-light)]">
@@ -295,8 +303,9 @@ export default function PracticeScreen() {
                     </p>
                   )}
                   {feedback === 'incorrect' && currentQuestion.explanation && (
-                    <p className="text-sm mt-2 text-[var(--color-text)] bg-white/60 rounded-xl px-3 py-2 leading-relaxed">
-                      💡 {currentQuestion.explanation}
+                    <p className="text-sm mt-2 text-[var(--color-text)] bg-white/60 rounded-xl px-3 py-2 leading-relaxed flex items-start gap-1.5">
+                      <Lightbulb size={14} className="flex-shrink-0 mt-0.5 text-[var(--color-primary)]" />
+                      {currentQuestion.explanation}
                     </p>
                   )}
                 </div>

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useProgress } from '../../context/ProgressContext'
 import { computeStickers, GROUP_LABELS, GROUP_ORDER } from '../../data/stickers'
+import { ArrowLeft } from 'lucide-react'
 
 function StickerItem({ sticker }) {
   if (!sticker.earned) {
@@ -48,7 +49,7 @@ export default function StickersScreen() {
           className="w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-sm font-bold text-[var(--color-text-light)] hover:bg-[var(--color-bg)] active:scale-95 transition-all flex-shrink-0"
           aria-label="Back to home"
         >
-          ←
+          <ArrowLeft size={18} />
         </button>
         <div className="flex-1">
           <h1 className="text-2xl font-extrabold text-[var(--color-text)]">My Stickers</h1>

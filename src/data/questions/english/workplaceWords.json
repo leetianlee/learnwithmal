@@ -9,7 +9,8 @@
     "correctAnswer": "Pillow",
     "hint": "Guests rest their head on it when they sleep.",
     "explanation": "A pillow is the soft item at the top of the bed for resting your head on.",
-    "tags": ["hotel-items", "basic-vocabulary"]
+    "tags": ["hotel-items", "basic-vocabulary"],
+    "image": "pillow"
   },
   {
     "id": "workplaceWords_1_2",
@@ -21,7 +22,8 @@
     "correctAnswer": "Towel",
     "hint": "It is soft and you use it after a bath or shower.",
     "explanation": "A towel is used to dry your body after bathing or showering.",
-    "tags": ["hotel-items", "basic-vocabulary"]
+    "tags": ["hotel-items", "basic-vocabulary"],
+    "image": "towel"
   },
   {
     "id": "workplaceWords_1_3",
@@ -33,7 +35,8 @@
     "correctAnswer": "Bedsheet",
     "hint": "It goes on top of the mattress, under the blanket.",
     "explanation": "A bedsheet is the large cloth that covers the mattress. You put it on before the blanket.",
-    "tags": ["hotel-items", "basic-vocabulary"]
+    "tags": ["hotel-items", "basic-vocabulary"],
+    "image": "bedsheet"
   },
   {
     "id": "workplaceWords_1_4",
@@ -69,7 +72,8 @@
     "correctAnswer": "Hanger",
     "hint": "It has a hook at the top and a bar to hold clothes.",
     "explanation": "A hanger is the hook-shaped item you put inside shirts and jackets to hang them in the wardrobe.",
-    "tags": ["hotel-items", "basic-vocabulary"]
+    "tags": ["hotel-items", "basic-vocabulary"],
+    "image": "hanger"
   },
   {
     "id": "workplaceWords_1_7",
@@ -81,7 +85,8 @@
     "correctAnswer": "Soap",
     "hint": "You rub it on your hands with water to get them clean.",
     "explanation": "Soap is the small bar or liquid that guests use with water to wash and clean their hands.",
-    "tags": ["hotel-items", "basic-vocabulary"]
+    "tags": ["hotel-items", "basic-vocabulary"],
+    "image": "soap"
   },
 
   {
@@ -94,7 +99,8 @@
     "correctAnswer": "Mop",
     "hint": "You use it with water to clean wet floors.",
     "explanation": "A mop has a long handle with a sponge or cloth head, used with water to clean floors.",
-    "tags": ["cleaning-tools", "vocabulary"]
+    "tags": ["cleaning-tools", "vocabulary"],
+    "image": "mop"
   },
   {
     "id": "workplaceWords_2_2",
@@ -118,7 +124,8 @@
     "correctAnswer": "Spray bottle",
     "hint": "You use it to spray cleaning liquid onto surfaces.",
     "explanation": "A spray bottle has a trigger you press to spray cleaning liquid as a fine mist onto surfaces.",
-    "tags": ["cleaning-tools", "vocabulary"]
+    "tags": ["cleaning-tools", "vocabulary"],
+    "image": "spray bottle"
   },
   {
     "id": "workplaceWords_2_4",
@@ -130,7 +137,8 @@
     "correctAnswer": "Sponge",
     "hint": "It is small, soft, and full of tiny holes that hold water.",
     "explanation": "A sponge is a soft, absorbent tool used with water or soap to scrub and clean surfaces.",
-    "tags": ["cleaning-tools", "vocabulary"]
+    "tags": ["cleaning-tools", "vocabulary"],
+    "image": "sponge"
   },
   {
     "id": "workplaceWords_2_5",
@@ -142,7 +150,8 @@
     "correctAnswer": "Gloves",
     "hint": "They cover your hands and fingers to keep them safe.",
     "explanation": "Gloves are worn on your hands to protect them from chemicals, dirt, and germs while cleaning.",
-    "tags": ["cleaning-tools", "safety", "vocabulary"]
+    "tags": ["cleaning-tools", "safety", "vocabulary"],
+    "image": "gloves"
   },
   {
     "id": "workplaceWords_2_6",
@@ -154,7 +163,8 @@
     "correctAnswer": "Trash bag",
     "hint": "It is a big plastic bag for collecting waste.",
     "explanation": "A trash bag (or bin bag) is a large plastic bag used to collect and throw away rubbish.",
-    "tags": ["cleaning-tools", "vocabulary"]
+    "tags": ["cleaning-tools", "vocabulary"],
+    "image": "trash bag"
   },
   {
     "id": "workplaceWords_2_7",
@@ -356,7 +366,8 @@
     "correctAnswer": "The floor is wet — be careful, it is slippery",
     "hint": "This sign warns people about danger on the floor.",
     "explanation": "'Wet Floor' means the floor has just been mopped and is still wet. Walk carefully to avoid slipping.",
-    "tags": ["workplace-signs", "safety", "vocabulary"]
+    "tags": ["workplace-signs", "safety", "vocabulary"],
+    "image": "wet floor"
   },
   {
     "id": "workplaceWords_5_2",
@@ -368,7 +379,8 @@
     "correctAnswer": "Only hotel workers can go through this door",
     "hint": "'Staff' means the people who work at the hotel.",
     "explanation": "'Staff Only' means this area is for hotel employees only. Guests should not enter.",
-    "tags": ["workplace-signs", "vocabulary"]
+    "tags": ["workplace-signs", "vocabulary"],
+    "image": "staff only"
   },
   {
     "id": "workplaceWords_5_3",
@@ -380,7 +392,8 @@
     "correctAnswer": "Do not knock or enter — the guest wants privacy",
     "hint": "'Disturb' means to bother someone or interrupt them.",
     "explanation": "'Do Not Disturb' means the guest does not want anyone to knock, enter, or clean the room right now.",
-    "tags": ["workplace-signs", "vocabulary"]
+    "tags": ["workplace-signs", "vocabulary"],
+    "image": "do not disturb"
   },
   {
     "id": "workplaceWords_5_4",
@@ -392,7 +405,8 @@
     "correctAnswer": "The lift is broken and cannot be used",
     "hint": "'Out of order' means something is not working.",
     "explanation": "'Out of Order' means the machine or equipment is broken and cannot be used right now. Take the stairs instead.",
-    "tags": ["workplace-signs", "vocabulary"]
+    "tags": ["workplace-signs", "vocabulary"],
+    "image": "out of order"
   },
   {
     "id": "workplaceWords_5_5",
@@ -404,7 +418,8 @@
     "correctAnswer": "It shows the way out in case of fire or emergency",
     "hint": "'Emergency' means a dangerous situation like a fire. 'Exit' means the way out.",
     "explanation": "An Emergency Exit sign shows the safest way to leave the building during a fire or other emergency.",
-    "tags": ["workplace-signs", "safety", "vocabulary"]
+    "tags": ["workplace-signs", "safety", "vocabulary"],
+    "image": "emergency exit"
   },
   {
     "id": "workplaceWords_5_6",
@@ -416,7 +431,8 @@
     "correctAnswer": "You are not allowed to smoke here",
     "hint": "The red line through something means 'not allowed'.",
     "explanation": "'No Smoking' means smoking is not allowed in this area. It is against the rules.",
-    "tags": ["workplace-signs", "safety", "vocabulary"]
+    "tags": ["workplace-signs", "safety", "vocabulary"],
+    "image": "no smoking"
   },
   {
     "id": "workplaceWords_5_7",
@@ -428,7 +444,8 @@
     "correctAnswer": "A housekeeper is cleaning this room right now",
     "hint": "'In progress' means it is happening right now.",
     "explanation": "'Housekeeping In Progress' tells guests that a housekeeper is currently cleaning the room.",
-    "tags": ["workplace-signs", "vocabulary"]
+    "tags": ["workplace-signs", "vocabulary"],
+    "image": "housekeeping in progress"
   },
 
   {
