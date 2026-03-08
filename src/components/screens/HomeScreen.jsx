@@ -1,18 +1,19 @@
 import { useNavigate } from 'react-router-dom'
 import { useProgress } from '../../context/ProgressContext'
-import { getGreeting } from '../../utils/dateUtils'
-import { calculateStreak } from '../../utils/dateUtils'
+import { getGreeting, calculateStreak } from '../../utils/dateUtils'
+import { computeAchievements } from '../../data/achievements'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
 
 export default function HomeScreen() {
   const navigate = useNavigate()
-  const { sessions, todayCompleted } = useProgress()
+  const { progress, sessions, todayCompleted } = useProgress()
   const greeting = getGreeting()
   const streak = calculateStreak(sessions.log)
   const mathDone = todayCompleted('math')
   const englishDone = todayCompleted('english')
   const lifeDone = todayCompleted('life')
   const allDone = mathDone && englishDone && lifeDone
+  const earnedCount = computeAchievements(progress, sessions).filter(a => a.earned).length
 
   return (
     <div className="min-h-screen flex flex-col p-5 max-w-2xl mx-auto w-full">
@@ -22,14 +23,25 @@ export default function HomeScreen() {
           <MalcolmAvatar size={110} pose="happy" />
         </div>
         <h1 className="text-3xl font-extrabold text-[var(--color-text)]">{greeting}, Malcolm!</h1>
-        {streak > 0 && (
-          <div className="inline-flex items-center gap-2 mt-3 bg-[var(--color-incorrect-light)] px-4 py-1.5 rounded-full">
-            <span className="text-lg">🔥</span>
-            <span className="text-sm font-bold text-[var(--color-incorrect)]">
-              {streak} day{streak !== 1 ? 's' : ''} in a row!
+        <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
+          {streak > 0 && (
+            <div className="inline-flex items-center gap-2 bg-[var(--color-incorrect-light)] px-4 py-1.5 rounded-full">
+              <span className="text-lg">🔥</span>
+              <span className="text-sm font-bold text-[var(--color-incorrect)]">
+                {streak} day{streak !== 1 ? 's' : ''} in a row!
+              </span>
+            </div>
+          )}
+          <button
+            onClick={() => navigate('/achievements')}
+            className="inline-flex items-center gap-1.5 bg-[var(--color-primary-light)] px-4 py-1.5 rounded-full hover:bg-[var(--color-primary)] hover:text-white transition-all active:scale-95 group"
+          >
+            <span className="text-lg">🏆</span>
+            <span className="text-sm font-bold text-[var(--color-primary)] group-hover:text-white">
+              {earnedCount} earned
             </span>
-          </div>
-        )}
+          </button>
+        </div>
       </div>
 
       {/* Daily Checklist */}

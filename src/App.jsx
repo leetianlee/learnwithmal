@@ -9,6 +9,7 @@ import SettingsScreen from './components/screens/SettingsScreen'
 import ParentDashboard from './components/screens/ParentDashboard'
 import DailyPlanScreen from './components/screens/DailyPlanScreen'
 import ParentGuide from './components/screens/ParentGuide'
+import AchievementsScreen from './components/screens/AchievementsScreen'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="/settings" element={<SettingsScreen />} />
               <Route path="/parent" element={<ParentDashboard />} />
               <Route path="/parent/guide" element={<ParentGuide />} />
+              <Route path="/achievements" element={<AchievementsScreen />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
