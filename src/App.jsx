@@ -10,6 +10,7 @@ import ParentDashboard from './components/screens/ParentDashboard'
 import DailyPlanScreen from './components/screens/DailyPlanScreen'
 import ParentGuide from './components/screens/ParentGuide'
 import AchievementsScreen from './components/screens/AchievementsScreen'
+import StickersScreen from './components/screens/StickersScreen'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
               <Route path="/parent" element={<ParentDashboard />} />
               <Route path="/parent/guide" element={<ParentGuide />} />
               <Route path="/achievements" element={<AchievementsScreen />} />
+              <Route path="/stickers" element={<StickersScreen />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>

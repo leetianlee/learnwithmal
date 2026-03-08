@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useProgress } from '../../context/ProgressContext'
 import { getGreeting, calculateStreak } from '../../utils/dateUtils'
 import { computeAchievements } from '../../data/achievements'
+import { computeStickers } from '../../data/stickers'
 import { MODULES } from '../../data/moduleMetadata'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
 
@@ -58,6 +59,7 @@ export default function HomeScreen() {
   const lifeDone = todayCompleted('life')
   const allDone = mathDone && englishDone && lifeDone
   const earnedCount = computeAchievements(progress, sessions).filter(a => a.earned).length
+  const stickerCount = computeStickers(progress, sessions).filter(s => s.earned).length
   const encouragement = getEncouragement(progress)
 
   return (
@@ -83,7 +85,16 @@ export default function HomeScreen() {
           >
             <span className="text-lg">🏆</span>
             <span className="text-sm font-bold text-[var(--color-primary)] group-hover:text-white">
-              {earnedCount} earned
+              {earnedCount}
+            </span>
+          </button>
+          <button
+            onClick={() => navigate('/stickers')}
+            className="inline-flex items-center gap-1.5 bg-[var(--color-incorrect-light)] px-4 py-1.5 rounded-full hover:bg-[var(--color-incorrect)] hover:text-white transition-all active:scale-95 group"
+          >
+            <span className="text-lg">🎁</span>
+            <span className="text-sm font-bold text-[var(--color-incorrect)] group-hover:text-white">
+              {stickerCount}
             </span>
           </button>
         </div>
