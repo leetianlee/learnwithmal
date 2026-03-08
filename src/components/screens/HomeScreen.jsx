@@ -2,7 +2,51 @@ import { useNavigate } from 'react-router-dom'
 import { useProgress } from '../../context/ProgressContext'
 import { getGreeting, calculateStreak } from '../../utils/dateUtils'
 import { computeAchievements } from '../../data/achievements'
+import { MODULES } from '../../data/moduleMetadata'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
+
+/** Compute average level per subject and return a gentle encouragement message */
+function getEncouragement(progress) {
+  const subjectAvg = {}
+  for (const [subject, modules] of Object.entries(MODULES)) {
+    let totalLevel = 0
+    for (const mod of modules) {
+      const p = progress[subject]?.[mod.id]
+      totalLevel += p ? p.currentLevel : 1
+    }
+    subjectAvg[subject] = totalLevel / modules.length
+  }
+
+  // Find strongest and weakest
+  const entries = Object.entries(subjectAvg)
+  entries.sort((a, b) => b[1] - a[1])
+  const strongest = entries[0]
+  const weakest = entries[entries.length - 1]
+
+  // Don't show if everything is level 1 (brand new user)
+  if (strongest[1] <= 1) return null
+
+  // Don't show if gap is very small (balanced learner)
+  const gap = strongest[1] - weakest[1]
+  if (gap < 1.5) {
+    return { icon: '\u{1F31F}', text: 'You\'re doing great across all subjects!' }
+  }
+
+  const names = { math: 'Math', english: 'English', life: 'Life Skills' }
+  const strongName = names[strongest[0]]
+  const weakName = names[weakest[0]]
+
+  // Warm, encouraging messages — never critical
+  const messages = [
+    `${strongName} is going really well! A little ${weakName} practice today would be awesome.`,
+    `You're a ${strongName} star! How about some ${weakName} today too?`,
+    `Great progress in ${strongName}! Try a bit of ${weakName} to keep everything growing.`,
+  ]
+
+  // Pick a consistent message per day (not random per render)
+  const dayIndex = new Date().getDate() % messages.length
+  return { icon: '\u{1F4AC}', text: messages[dayIndex] }
+}
 
 export default function HomeScreen() {
   const navigate = useNavigate()
@@ -14,6 +58,7 @@ export default function HomeScreen() {
   const lifeDone = todayCompleted('life')
   const allDone = mathDone && englishDone && lifeDone
   const earnedCount = computeAchievements(progress, sessions).filter(a => a.earned).length
+  const encouragement = getEncouragement(progress)
 
   return (
     <div className="min-h-screen flex flex-col p-5 max-w-2xl mx-auto w-full">
@@ -115,6 +160,16 @@ export default function HomeScreen() {
           </div>
         )}
       </div>
+
+      {/* Gentle Encouragement */}
+      {encouragement && !allDone && (
+        <div className="bg-white rounded-2xl shadow-card p-4 mb-4 flex items-start gap-3 animate-fade-in">
+          <span className="text-xl flex-shrink-0 mt-0.5">{encouragement.icon}</span>
+          <p className="text-sm font-semibold text-[var(--color-text-light)] leading-relaxed">
+            {encouragement.text}
+          </p>
+        </div>
+      )}
 
       {/* Daily Plan Button */}
       {!allDone && (
