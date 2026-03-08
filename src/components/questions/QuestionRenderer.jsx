@@ -5,6 +5,7 @@ import ClockFace from '../visuals/ClockFace'
 import { Coin, Note } from '../visuals/CurrencyVisuals'
 import { ChickenRice, Kopi, NasiLemak, Milo, FOOD_COMPONENTS } from '../visuals/HawkerFood'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
+import SpeakerIndicator from '../visuals/SpeakerIndicator'
 import ScheduleTable from '../visuals/ScheduleTable'
 
 export default function QuestionRenderer({ question, onAnswer, feedback, showHint, moduleId }) {
@@ -161,18 +162,14 @@ function QuestionVisual({ question, moduleId }) {
     // "Which is a X?" identification questions — no visual (don't give away answer)
   }
 
-  // English pronouns: show Malcolm avatar with auto-detected pose
+  // English pronouns: show speaker indicator (who is talking to whom)
   if (moduleId === 'pronouns') {
-    const q = question.question.toLowerCase()
-    let pose = 'neutral'
-    if (q.includes('hungry') || q.includes('happy') || q.includes('excited')) pose = 'happy'
-    else if (q.includes('want') || q.includes('need') || q.includes('help')) pose = 'pointing'
-    else if (q.includes('hello') || q.includes('hi ') || q.includes('goodbye')) pose = 'waving'
-    else if (q.includes('think') || q.includes('wonder') || q.includes('know')) pose = 'thinking'
-
     return (
-      <div className="mb-5 flex justify-center">
-        <MalcolmAvatar size={115} pose={pose} />
+      <div className="mb-4 w-full">
+        <SpeakerIndicator
+          speaker={question.speaker || 'malcolm'}
+          speakerLabel={question.speakerLabel}
+        />
       </div>
     )
   }
