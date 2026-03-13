@@ -13,7 +13,12 @@
     ],
     "correctAnswer": "Keycard, room attendant's report and walkie talkie",
     "hint": "Think about what you were given at the START of your shift that belongs to the hotel.",
-    "tags": ["sign-in", "end-shift", "keycard", "equipment"],
+    "tags": [
+      "sign-in",
+      "end-shift",
+      "keycard",
+      "equipment"
+    ],
     "explanation": "At the end of your shift, you sign in the keycard, room attendant's report and walkie talkie. These are hotel equipment issued to you at the start of your shift and must be returned."
   },
   {
@@ -30,7 +35,12 @@
     ],
     "correctAnswer": "No, it is against company rules to sign out work items for colleagues.",
     "hint": "Each person must be accountable for their own items. Signing out for someone else is not allowed.",
-    "tags": ["sign-out", "company-rules", "accountability", "colleagues"],
+    "tags": [
+      "sign-out",
+      "company-rules",
+      "accountability",
+      "colleagues"
+    ],
     "explanation": "It is against company rules to sign out work items for colleagues. Every staff member must personally sign out their own items so they are accountable for them."
   },
   {
@@ -47,7 +57,13 @@
     ],
     "correctAnswer": "A) Cleaning chemicals in a caddy, D) Cleaning cloths, E) Rubber gloves and F) New guest supplies",
     "hint": "You need cleaning chemicals, cloths for wiping, gloves to protect your hands, and fresh supplies for the guest. A walkie talkie is for communication, not cleaning.",
-    "tags": ["caddy", "cleaning-items", "rubber-gloves", "guest-supplies", "equipment"],
+    "tags": [
+      "caddy",
+      "cleaning-items",
+      "rubber-gloves",
+      "guest-supplies",
+      "equipment"
+    ],
     "explanation": "The correct items are: A) Cleaning chemicals in a caddy, D) Cleaning cloths, E) Rubber gloves, and F) New guest supplies. A walkie talkie (B) is communication equipment and dirty towels (C) are collected from rooms — neither are cleaning tools you bring to service a room."
   },
   {
@@ -64,7 +80,12 @@
     ],
     "correctAnswer": "Go to the next room shown on your room attendant's report.",
     "hint": "The DND sign means the guest does NOT want to be disturbed at all. What do you do instead?",
-    "tags": ["DND", "do-not-disturb", "room-attendant-report", "guest-privacy"],
+    "tags": [
+      "DND",
+      "do-not-disturb",
+      "room-attendant-report",
+      "guest-privacy"
+    ],
     "explanation": "When you see a 'Do Not Disturb' sign, respect the guest's privacy and go to the next room on your room attendant's report. Never press the doorbell, wait, or enter a room with a DND sign."
   },
   {
@@ -81,7 +102,12 @@
     ],
     "correctAnswer": "Inform your supervisor.",
     "hint": "Check out time has passed — this is an unusual situation. You should not handle this alone. Who do you report to?",
-    "tags": ["DND", "checkout", "supervisor", "escalate"],
+    "tags": [
+      "DND",
+      "checkout",
+      "supervisor",
+      "escalate"
+    ],
     "explanation": "When check out time has passed but the DND sign is still up, inform your supervisor immediately. Do not scold the guest or handle this situation on your own — your supervisor needs to decide what to do."
   },
   {
@@ -98,8 +124,19 @@
     ],
     "correctAnswer": "A neatly made bed with smooth sheets, pillows in place and bedside lights on",
     "hint": "A well-presented room looks neat, tidy, and ready for the guest.",
-    "tags": ["clean-room", "presentation", "bed-making", "standards"],
-    "explanation": "A clean and well-presented room has a neatly made bed with smooth sheets, pillows properly placed, and the room looking tidy and welcoming for the guest."
+    "tags": [
+      "clean-room",
+      "presentation",
+      "bed-making",
+      "standards"
+    ],
+    "explanation": "A clean and well-presented room has a neatly made bed with smooth sheets, pillows properly placed, and the room looking tidy and welcoming for the guest.",
+    "optionImages": {
+      "A bed that has not been made up, with items left on it": "/assets/wsq/q06_a.jpg",
+      "A neatly made bed with smooth sheets, pillows in place and bedside lights on": "/assets/wsq/q06_b.jpg",
+      "A messy bed with sheets and blankets hanging off the sides": "/assets/wsq/q06_c.jpg",
+      "A dark room with a dishevelled, unmade bed": "/assets/wsq/q06_d.jpg"
+    }
   },
   {
     "id": "wsqGuestrooms_2_003",
@@ -115,7 +152,12 @@
     ],
     "correctAnswer": "All of the above.",
     "hint": "Think about all the people who benefit from a clean room — the guest, the hotel's business, and the staff.",
-    "tags": ["clean-room", "guest-satisfaction", "professionalism", "standards"],
+    "tags": [
+      "clean-room",
+      "guest-satisfaction",
+      "professionalism",
+      "standards"
+    ],
     "explanation": "All three statements are correct. A clean room makes guests feel happy, comfortable and safe; attracts more guests to the hotel or serviced apartment; and shows staff are professional and doing a good job."
   },
   {
@@ -131,10 +173,25 @@
       "Dirty fingernails",
       "Clean shaven"
     ],
-    "correctAnswer": ["Clean and neat uniform", "Clean shaven"],
+    "correctAnswer": [
+      "Clean and neat uniform",
+      "Clean shaven"
+    ],
     "hint": "A professional appearance is neat and clean. Heavy makeup and dirty nails do not create a good impression.",
-    "tags": ["grooming", "appearance", "uniform", "professionalism", "first-impression"],
-    "explanation": "A clean and neat uniform and being clean shaven give guests a good impression. Thick colourful makeup and dirty fingernails are unprofessional and should be avoided at work."
+    "tags": [
+      "grooming",
+      "appearance",
+      "uniform",
+      "professionalism",
+      "first-impression"
+    ],
+    "explanation": "A clean and neat uniform and being clean shaven give guests a good impression. Thick colourful makeup and dirty fingernails are unprofessional and should be avoided at work.",
+    "optionImages": {
+      "Thick and colourful makeup": "/assets/wsq/q08_a.jpg",
+      "Clean and neat uniform": "/assets/wsq/q08_b.jpg",
+      "Dirty fingernails": "/assets/wsq/q08_c.jpg",
+      "Clean shaven": "/assets/wsq/q08_d.jpg"
+    }
   },
   {
     "id": "wsqGuestrooms_3_001",
@@ -150,8 +207,19 @@
     ],
     "correctAnswer": "Set 2: Twin beds and a double bed in a hotel room",
     "hint": "Standard hotel beds are proper beds with frames and mattresses. Bunk beds, sofa beds, and floor mats are not standard hotel room beds.",
-    "tags": ["beds", "twin-bed", "double-bed", "hotel-standards"],
-    "explanation": "Standard hotel beds are twin beds (two single beds) and double beds (one large bed). Bunk beds, sofa beds, floor mattresses, and Japanese-style floor beds are not standard hotel room bed types."
+    "tags": [
+      "beds",
+      "twin-bed",
+      "double-bed",
+      "hotel-standards"
+    ],
+    "explanation": "Standard hotel beds are twin beds (two single beds) and double beds (one large bed). Bunk beds, sofa beds, floor mattresses, and Japanese-style floor beds are not standard hotel room bed types.",
+    "optionImages": {
+      "Set 1: A regular hotel bed and a bunk bed": "/assets/wsq/q09_a.jpg",
+      "Set 2: Twin beds and a double bed in a hotel room": "/assets/wsq/q09_b.jpg",
+      "Set 3: A floor mattress and a sofa bed": "/assets/wsq/q09_c.jpg",
+      "Set 4: Japanese-style floor beds and a small single bed": "/assets/wsq/q09_d.jpg"
+    }
   },
   {
     "id": "wsqGuestrooms_3_002",
@@ -167,7 +235,13 @@
     ],
     "correctAnswer": "politely tell the guest I cannot open the door because I need to protect the guest's safety and security",
     "hint": "You cannot verify who this person really is. Opening the door for an unverified person is a safety risk.",
-    "tags": ["keycard", "security", "door", "guest-safety", "policy"],
+    "tags": [
+      "keycard",
+      "security",
+      "door",
+      "guest-safety",
+      "policy"
+    ],
     "explanation": "You must politely tell the guest you cannot open the door because you need to protect the guest's safety and security. You have no way to confirm the person's identity — direct them to the front desk instead."
   },
   {
@@ -184,7 +258,13 @@
     ],
     "correctAnswer": "do not have the guest's information to confirm his / her identity",
     "hint": "The reason is about safety — you cannot prove the person is actually the guest who booked that room.",
-    "tags": ["security", "identity", "door", "policy", "guest-safety"],
+    "tags": [
+      "security",
+      "identity",
+      "door",
+      "policy",
+      "guest-safety"
+    ],
     "explanation": "You are not allowed to open the door because you do not have the guest's information to confirm his / her identity. Anyone could claim to be the guest. Direct them to the front desk to verify their identity."
   },
   {
@@ -201,7 +281,12 @@
     ],
     "correctAnswer": "front desk",
     "hint": "Who has the guest's booking information and can verify their identity to give them access?",
-    "tags": ["front-desk", "door", "guest-assistance", "policy"],
+    "tags": [
+      "front-desk",
+      "door",
+      "guest-assistance",
+      "policy"
+    ],
     "explanation": "Direct the guest to the front desk. The front desk has the guest's booking information and can verify their identity before granting access to the room."
   },
   {
@@ -218,8 +303,19 @@
     ],
     "correctAnswer": "Kneel on the carpet",
     "hint": "Think about which posture protects your back and keeps the bed clean.",
-    "tags": ["bed-making", "safety", "posture", "ergonomics"],
-    "explanation": "Kneeling on the carpet is the correct safety posture when making the bed. It protects your back from injury and keeps the bed clean. Never sit or kneel on the bed itself as it dirties and damages it."
+    "tags": [
+      "bed-making",
+      "safety",
+      "posture",
+      "ergonomics"
+    ],
+    "explanation": "Kneeling on the carpet is the correct safety posture when making the bed. It protects your back from injury and keeps the bed clean. Never sit or kneel on the bed itself as it dirties and damages it.",
+    "optionImages": {
+      "Sit on the bed": "/assets/wsq/q13_a.jpg",
+      "Kneel on the bed": "/assets/wsq/q13_b.jpg",
+      "Kneel on the carpet": "/assets/wsq/q13_c.jpg",
+      "Stand and bend over the bed": "/assets/wsq/q13_d.jpg"
+    }
   },
   {
     "id": "wsqGuestrooms_4_002",
@@ -235,7 +331,12 @@
     ],
     "correctAnswer": "Pack caddy → Make bed → Dust room → Clean bathroom → Vacuum room",
     "hint": "Always prepare your tools first (pack caddy). Then work through the room. Vacuum LAST.",
-    "tags": ["work-sequence", "cleaning-order", "caddy", "vacuum-last"],
+    "tags": [
+      "work-sequence",
+      "cleaning-order",
+      "caddy",
+      "vacuum-last"
+    ],
     "explanation": "The correct sequence is: Pack caddy → Make bed → Dust room → Clean bathroom → Vacuum room. Pack the caddy first so you have all your tools. Vacuum last so you do not dirty the carpet again after cleaning."
   },
   {
@@ -256,7 +357,12 @@
       "I should not walk and leave my footprints on the carpet after vacuuming"
     ],
     "hint": "Think about what happens to a freshly vacuumed carpet if you keep working in the room or walk on it after.",
-    "tags": ["vacuuming", "carpet", "work-sequence", "footprints"],
+    "tags": [
+      "vacuuming",
+      "carpet",
+      "work-sequence",
+      "footprints"
+    ],
     "explanation": "Vacuum last for two reasons: (1) I will not dirty the carpet by performing other cleaning tasks after vacuuming, and (2) I should not walk and leave my footprints on the carpet after vacuuming. Always vacuum as your very last step."
   },
   {
@@ -277,8 +383,19 @@
       "set the air-con temperature to 25°C"
     ],
     "hint": "Turndown service creates a soft, comfortable sleeping atmosphere. Think: gentle warm light, and a comfortable temperature.",
-    "tags": ["turndown", "bedside-light", "air-con", "pleasant-environment"],
-    "explanation": "For a pleasant turndown environment, switch on 1 bedside light (soft and relaxing — not both lights) and set the air-con temperature to 25°C for a comfortable sleeping temperature."
+    "tags": [
+      "turndown",
+      "bedside-light",
+      "air-con",
+      "pleasant-environment"
+    ],
+    "explanation": "For a pleasant turndown environment, switch on 1 bedside light (soft and relaxing — not both lights) and set the air-con temperature to 25°C for a comfortable sleeping temperature.",
+    "optionImages": {
+      "switch on 1 bedside light": "/assets/wsq/q16_a.jpg",
+      "switch on both bedside lights": "/assets/wsq/q16_b.jpg",
+      "set the air-con temperature to 25°C": "/assets/wsq/q16_d.jpg",
+      "replace the used guest amenities": "/assets/wsq/q16_c.jpg"
+    }
   },
   {
     "id": "wsqGuestrooms_5_002",
@@ -298,7 +415,12 @@
       "The guest can relax and enjoy the evening before sleeping."
     ],
     "hint": "Turndown service is done in the EVENING for the CURRENT guest. It is NOT for the next guest.",
-    "tags": ["turndown", "guest-service", "evening", "relaxation"],
+    "tags": [
+      "turndown",
+      "guest-service",
+      "evening",
+      "relaxation"
+    ],
     "explanation": "Turndown service is provided so the guest can get ready for bed and can relax and enjoy the evening before sleeping. It is not done to prepare the room for the next guest — that happens during regular servicing after checkout."
   },
   {
@@ -315,7 +437,12 @@
     ],
     "correctAnswer": "Sweep and mop the floor.",
     "hint": "Just like vacuuming the carpet, what should you always do LAST in the kitchenette?",
-    "tags": ["kitchenette", "cleaning-sequence", "mop-last", "floor"],
+    "tags": [
+      "kitchenette",
+      "cleaning-sequence",
+      "mop-last",
+      "floor"
+    ],
     "explanation": "Sweep and mop the floor is the LAST step when cleaning the kitchenette. You do the floor last so any dirt from washing cutleries or wiping surfaces falls to the floor first — then you clean it."
   },
   {
@@ -332,7 +459,12 @@
     ],
     "correctAnswer": "Remove rubbish → Wash cutleries → Wipe equipment and counters → Mop floor",
     "hint": "Start by clearing the rubbish first. Then clean items and surfaces. Always mop the floor LAST.",
-    "tags": ["kitchenette", "cleaning-sequence", "rubbish-first", "mop-last"],
+    "tags": [
+      "kitchenette",
+      "cleaning-sequence",
+      "rubbish-first",
+      "mop-last"
+    ],
     "explanation": "The correct sequence is: Remove rubbish → Wash cutleries → Wipe equipment and counters → Mop floor. Clear waste first, then clean from top to bottom, and always mop the floor last."
   },
   {
@@ -353,7 +485,12 @@
       "protect the privacy of guests by not sharing guest information with other guests and colleagues"
     ],
     "hint": "Guest information is completely private. A professional hotel worker never gossips or shares guest information.",
-    "tags": ["privacy", "confidentiality", "guest-information", "professionalism"],
+    "tags": [
+      "privacy",
+      "confidentiality",
+      "guest-information",
+      "professionalism"
+    ],
     "explanation": "You must keep the guest's information confidential AND protect the privacy of guests by not sharing guest information with other guests and colleagues. Never gossip about guests — it is unprofessional and violates their trust."
   },
   {
@@ -370,7 +507,12 @@
     ],
     "correctAnswer": "trust the hotel and the staff",
     "hint": "When guests feel their privacy is respected, how do they feel about the hotel?",
-    "tags": ["privacy", "guest-trust", "professionalism", "reputation"],
+    "tags": [
+      "privacy",
+      "guest-trust",
+      "professionalism",
+      "reputation"
+    ],
     "explanation": "When hotel staff respect and protect the privacy of guests, the guests will trust the hotel and the staff. This trust encourages guests to return and recommend the hotel to others."
   },
   {
@@ -391,7 +533,12 @@
       "I can build up more skills and become a professional employee."
     ],
     "hint": "Feedback helps you grow at work. Think about what YOU gain from receiving feedback from your supervisor.",
-    "tags": ["feedback", "supervisor", "improvement", "professional-growth"],
+    "tags": [
+      "feedback",
+      "supervisor",
+      "improvement",
+      "professional-growth"
+    ],
     "explanation": "It is important to seek feedback because I can improve on skills that I did not do well, and I can build up more skills and become a professional employee. Seeking feedback shows commitment to doing your job well."
   },
   {
@@ -412,7 +559,12 @@
       "gain more knowledge on housekeeping when supervisors share information with me"
     ],
     "hint": "Focus on what improves YOUR work and YOUR skills — not information about other staff members.",
-    "tags": ["feedback", "supervisor", "professional-development", "knowledge"],
+    "tags": [
+      "feedback",
+      "supervisor",
+      "professional-development",
+      "knowledge"
+    ],
     "explanation": "When I seek feedback from my supervisors, I can learn to provide better and more professional services for my guests, and gain more knowledge on housekeeping when supervisors share information with me."
   },
   {
@@ -429,7 +581,12 @@
     ],
     "correctAnswer": "All of the above",
     "hint": "Is there just one way to learn about new tools, or are there many ways?",
-    "tags": ["learning", "professional-development", "equipment", "self-improvement"],
+    "tags": [
+      "learning",
+      "professional-development",
+      "equipment",
+      "self-improvement"
+    ],
     "explanation": "You can find out about new cleaning tools and equipment by searching the internet, attending exhibitions and fairs, and reading newspapers and magazines. Use all available ways to keep learning and improving."
   }
 ]
