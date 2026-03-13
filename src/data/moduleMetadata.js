@@ -15,6 +15,7 @@ export const MODULES = {
   ],
   life: [
     { id: 'workSkills', name: 'Work Skills', icon: 'Building2', maxLevel: 6, description: 'Hotel tasks and workplace scenarios' },
+    { id: 'wsqGuestrooms', name: 'WSQ Guestrooms', icon: 'ClipboardCheck', maxLevel: 6, description: 'WSQ Service Guestrooms exam practice' },
   ],
 }
 

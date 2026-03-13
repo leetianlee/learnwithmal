@@ -1,7 +1,7 @@
 import {
   Coins, Clock, Plus, Minus,
   User, HandMetal, MessageCircle, BookOpen,
-  Briefcase, Building2, AlignLeft,
+  Briefcase, Building2, AlignLeft, ClipboardCheck,
 } from 'lucide-react'
 
 const ICON_MAP = {
@@ -16,6 +16,7 @@ const ICON_MAP = {
   Briefcase,
   Building2,
   AlignLeft,
+  ClipboardCheck,
 }
 
 /**
