@@ -122,19 +122,19 @@
     "id": "wsqGuestrooms_2_004",
     "module": "wsqGuestrooms",
     "level": 2,
-    "type": "multipleChoice",
+    "type": "multiSelect",
+    "selectCount": 2,
     "question": "Which TWO (2) REASONS will give guests a good impression of you?",
-    "audio": "Which two reasons will give guests a good impression of you?",
     "options": [
-      "A) Thick and colourful makeup + B) Clean and neat uniform",
-      "A) Thick and colourful makeup + C) Dirty fingernails",
-      "B) Clean and neat uniform + C) Dirty fingernails",
-      "B) Clean and neat uniform + D) Clean shaven"
+      "Thick and colourful makeup",
+      "Clean and neat uniform",
+      "Dirty fingernails",
+      "Clean shaven"
     ],
-    "correctAnswer": "B) Clean and neat uniform + D) Clean shaven",
+    "correctAnswer": ["Clean and neat uniform", "Clean shaven"],
     "hint": "A professional appearance is neat and clean. Heavy makeup and dirty nails do not create a good impression.",
     "tags": ["grooming", "appearance", "uniform", "professionalism", "first-impression"],
-    "explanation": "B) A clean and neat uniform and D) being clean shaven give guests a good impression. A) Thick colourful makeup and C) dirty fingernails are unprofessional and should be avoided at work."
+    "explanation": "A clean and neat uniform and being clean shaven give guests a good impression. Thick colourful makeup and dirty fingernails are unprofessional and should be avoided at work."
   },
   {
     "id": "wsqGuestrooms_3_001",
@@ -242,16 +242,19 @@
     "id": "wsqGuestrooms_4_003",
     "module": "wsqGuestrooms",
     "level": 4,
-    "type": "multipleChoice",
+    "type": "multiSelect",
+    "selectCount": 2,
     "question": "It is important to vacuum the carpet LAST when servicing the guestrooms because ___ and ___.",
-    "audio": "It is important to vacuum the carpet last when servicing the guestrooms because blank and blank. Select the correct pair.",
     "options": [
-      "my supervisors will be proud of me + my colleagues do not have to clean it again later",
-      "my colleagues do not have to clean it again later + I will not dirty the carpet by performing other cleaning tasks",
-      "I will not dirty the carpet by performing other cleaning tasks + I should not walk and leave my footprints on the carpet after vacuuming",
-      "my supervisors will be proud of me + I should not walk and leave my footprints on the carpet after vacuuming"
+      "my supervisors will be proud of me",
+      "my colleagues do not have to clean it again later",
+      "I will not dirty the carpet by performing other cleaning tasks",
+      "I should not walk and leave my footprints on the carpet after vacuuming"
     ],
-    "correctAnswer": "I will not dirty the carpet by performing other cleaning tasks + I should not walk and leave my footprints on the carpet after vacuuming",
+    "correctAnswer": [
+      "I will not dirty the carpet by performing other cleaning tasks",
+      "I should not walk and leave my footprints on the carpet after vacuuming"
+    ],
     "hint": "Think about what happens to a freshly vacuumed carpet if you keep working in the room or walk on it after.",
     "tags": ["vacuuming", "carpet", "work-sequence", "footprints"],
     "explanation": "Vacuum last for two reasons: (1) I will not dirty the carpet by performing other cleaning tasks after vacuuming, and (2) I should not walk and leave my footprints on the carpet after vacuuming. Always vacuum as your very last step."
@@ -260,16 +263,19 @@
     "id": "wsqGuestrooms_5_001",
     "module": "wsqGuestrooms",
     "level": 5,
-    "type": "multipleChoice",
+    "type": "multiSelect",
+    "selectCount": 2,
     "question": "To create a pleasant environment in the room during turndown service, I will ___ and ___.",
-    "audio": "To create a pleasant environment in the room during turndown service, I will blank and blank. Select the correct pair.",
     "options": [
-      "switch on both bedside lights + replace the used guest amenities",
-      "switch on 1 bedside light + replace the used guest amenities",
-      "switch on 1 bedside light + set the air-con temperature to 25°C",
-      "switch on both bedside lights + set the air-con temperature to 25°C"
+      "switch on 1 bedside light",
+      "switch on both bedside lights",
+      "set the air-con temperature to 25°C",
+      "replace the used guest amenities"
     ],
-    "correctAnswer": "switch on 1 bedside light + set the air-con temperature to 25°C",
+    "correctAnswer": [
+      "switch on 1 bedside light",
+      "set the air-con temperature to 25°C"
+    ],
     "hint": "Turndown service creates a soft, comfortable sleeping atmosphere. Think: gentle warm light, and a comfortable temperature.",
     "tags": ["turndown", "bedside-light", "air-con", "pleasant-environment"],
     "explanation": "For a pleasant turndown environment, switch on 1 bedside light (soft and relaxing — not both lights) and set the air-con temperature to 25°C for a comfortable sleeping temperature."
@@ -278,16 +284,19 @@
     "id": "wsqGuestrooms_5_002",
     "module": "wsqGuestrooms",
     "level": 5,
-    "type": "multipleChoice",
+    "type": "multiSelect",
+    "selectCount": 2,
     "question": "What are TWO (2) REASONS for providing turndown service in hotels?",
-    "audio": "What are two reasons for providing turndown service in hotels? Select the correct pair.",
     "options": [
-      "The guest can get ready for bed. + The room will be ready for the next guest to check in.",
-      "The guest can get ready for bed. + The guest can relax and enjoy the evening before sleeping.",
-      "The room will be ready for the next guest to check in. + The guest will not need to make any request to the hotel.",
-      "The guest will not need to make any request to the hotel. + The guest can relax and enjoy the evening before sleeping."
+      "The guest can get ready for bed.",
+      "The room will be ready for the next guest to check in.",
+      "The guest will not need to make any request to the hotel.",
+      "The guest can relax and enjoy the evening before sleeping."
     ],
-    "correctAnswer": "The guest can get ready for bed. + The guest can relax and enjoy the evening before sleeping.",
+    "correctAnswer": [
+      "The guest can get ready for bed.",
+      "The guest can relax and enjoy the evening before sleeping."
+    ],
     "hint": "Turndown service is done in the EVENING for the CURRENT guest. It is NOT for the next guest.",
     "tags": ["turndown", "guest-service", "evening", "relaxation"],
     "explanation": "Turndown service is provided so the guest can get ready for bed and can relax and enjoy the evening before sleeping. It is not done to prepare the room for the next guest — that happens during regular servicing after checkout."
@@ -330,16 +339,19 @@
     "id": "wsqGuestrooms_6_001",
     "module": "wsqGuestrooms",
     "level": 6,
-    "type": "multipleChoice",
+    "type": "multiSelect",
+    "selectCount": 2,
     "question": "Which TWO (2) statements are CORRECT? I have to ___ and ___.",
-    "audio": "Which two statements are correct? I have to blank and blank. Select the correct pair.",
     "options": [
-      "keep the guest's information confidential + gossip about the guests with my colleagues",
-      "keep the guest's information confidential + protect the privacy of guests by not sharing guest information with other guests and colleagues",
-      "gossip about the guests with my colleagues + share the guest's medical conditions with my supervisor",
-      "share the guest's medical conditions with my supervisor + protect the privacy of guests by not sharing guest information with other guests and colleagues"
+      "keep the guest's information confidential",
+      "gossip about the guests with my colleagues",
+      "share the guest's medical conditions with my supervisor",
+      "protect the privacy of guests by not sharing guest information with other guests and colleagues"
     ],
-    "correctAnswer": "keep the guest's information confidential + protect the privacy of guests by not sharing guest information with other guests and colleagues",
+    "correctAnswer": [
+      "keep the guest's information confidential",
+      "protect the privacy of guests by not sharing guest information with other guests and colleagues"
+    ],
     "hint": "Guest information is completely private. A professional hotel worker never gossips or shares guest information.",
     "tags": ["privacy", "confidentiality", "guest-information", "professionalism"],
     "explanation": "You must keep the guest's information confidential AND protect the privacy of guests by not sharing guest information with other guests and colleagues. Never gossip about guests — it is unprofessional and violates their trust."
@@ -365,16 +377,19 @@
     "id": "wsqGuestrooms_6_003",
     "module": "wsqGuestrooms",
     "level": 6,
-    "type": "multipleChoice",
+    "type": "multiSelect",
+    "selectCount": 2,
     "question": "Why is it important to seek feedback from my supervisors?",
-    "audio": "Why is it important to seek feedback from my supervisors? Select the correct pair.",
     "options": [
-      "My fellow colleagues are doing so. + I can improve on skills that I did not do well.",
-      "I can improve on skills that I did not do well. + I can build up more skills and become a professional employee.",
-      "I can build up more skills and become a professional employee. + I can tell my supervisors that I do not want to accept their feedback.",
-      "My fellow colleagues are doing so. + I can tell my supervisors that I do not want to accept their feedback."
+      "My fellow colleagues are doing so.",
+      "I can improve on skills that I did not do well.",
+      "I can build up more skills and become a professional employee.",
+      "I can tell my supervisors that I do not want to accept their feedback."
     ],
-    "correctAnswer": "I can improve on skills that I did not do well. + I can build up more skills and become a professional employee.",
+    "correctAnswer": [
+      "I can improve on skills that I did not do well.",
+      "I can build up more skills and become a professional employee."
+    ],
     "hint": "Feedback helps you grow at work. Think about what YOU gain from receiving feedback from your supervisor.",
     "tags": ["feedback", "supervisor", "improvement", "professional-growth"],
     "explanation": "It is important to seek feedback because I can improve on skills that I did not do well, and I can build up more skills and become a professional employee. Seeking feedback shows commitment to doing your job well."
@@ -383,16 +398,19 @@
     "id": "wsqGuestrooms_6_004",
     "module": "wsqGuestrooms",
     "level": 6,
-    "type": "multipleChoice",
+    "type": "multiSelect",
+    "selectCount": 2,
     "question": "When I seek feedback from my supervisors, I can ___ and ___.",
-    "audio": "When I seek feedback from my supervisors, I can blank and blank. Select the correct pair.",
     "options": [
-      "learn from my supervisors which staff has resigned + learn how many newcomers joined the housekeeping team",
-      "learn from my supervisors which staff has resigned + learn to provide better and more professional services for my guests",
-      "learn how many newcomers joined the housekeeping team + gain more knowledge on housekeeping when supervisors share information with me",
-      "learn to provide better and more professional services for my guests + gain more knowledge on housekeeping when supervisors share information with me"
+      "learn from my supervisors which staff has resigned",
+      "learn how many newcomers joined the housekeeping team",
+      "learn to provide better and more professional services for my guests",
+      "gain more knowledge on housekeeping when supervisors share information with me"
     ],
-    "correctAnswer": "learn to provide better and more professional services for my guests + gain more knowledge on housekeeping when supervisors share information with me",
+    "correctAnswer": [
+      "learn to provide better and more professional services for my guests",
+      "gain more knowledge on housekeeping when supervisors share information with me"
+    ],
     "hint": "Focus on what improves YOUR work and YOUR skills — not information about other staff members.",
     "tags": ["feedback", "supervisor", "professional-development", "knowledge"],
     "explanation": "When I seek feedback from my supervisors, I can learn to provide better and more professional services for my guests, and gain more knowledge on housekeeping when supervisors share information with me."

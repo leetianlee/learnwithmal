@@ -97,24 +97,39 @@ export default function PracticeScreen() {
     }
   }, [feedback])
 
-  const handleAnswer = useCallback((selectedAnswer) => {
+  // selectedAnswer — string (multipleChoice) or string[] (multiSelect)
+  // isCorrectOverride — boolean pre-computed by MultiSelectQuestion; undefined for multipleChoice
+  const handleAnswer = useCallback((selectedAnswer, isCorrectOverride) => {
     if (feedback || !questions) return
     const question = questions[currentIndex]
-    const isCorrect = selectedAnswer === question.correctAnswer
+
+    // Determine correctness
+    const isCorrect = typeof isCorrectOverride === 'boolean'
+      ? isCorrectOverride
+      : selectedAnswer === question.correctAnswer
+
+    // Convert arrays to readable strings for storage / display
+    const displaySelected = Array.isArray(selectedAnswer)
+      ? selectedAnswer.join(' + ')
+      : selectedAnswer
+    const displayCorrect = Array.isArray(question.correctAnswer)
+      ? question.correctAnswer.join(' + ')
+      : question.correctAnswer
+
     setFeedback(isCorrect ? 'correct' : 'incorrect')
     setLastAnswerCorrect(isCorrect)
     setAnswers(prev => [...prev, {
       questionId: question.id,
-      selectedAnswer,
+      selectedAnswer: displaySelected,
       correct: isCorrect,
       questionText: question.question,
-      correctAnswer: question.correctAnswer,
+      correctAnswer: displayCorrect,
       explanation: question.explanation || null,
     }])
     recordAnswer(subject, moduleId, isCorrect, question.id, mod?.maxLevel || 7)
     // Persist wrong answers for Parent Dashboard
     if (!isCorrect) {
-      recordWrongAnswer(subject, moduleId, question.id, question.question, question.correctAnswer, selectedAnswer)
+      recordWrongAnswer(subject, moduleId, question.id, question.question, displayCorrect, displaySelected)
     }
     // Track if hint was shown before answering
     if (showHint) {
@@ -299,7 +314,11 @@ export default function PracticeScreen() {
                   </p>
                   {feedback === 'incorrect' && (
                     <p className="text-sm mt-1 text-[var(--color-text-light)]">
-                      The answer is: <strong className="text-[var(--color-text)]">{currentQuestion.correctAnswer}</strong>
+                      The answer is: <strong className="text-[var(--color-text)]">{
+                        Array.isArray(currentQuestion.correctAnswer)
+                          ? currentQuestion.correctAnswer.join(' + ')
+                          : currentQuestion.correctAnswer
+                      }</strong>
                     </p>
                   )}
                   {feedback === 'incorrect' && currentQuestion.explanation && (

@@ -1,4 +1,5 @@
 import MultipleChoiceQuestion from './MultipleChoiceQuestion'
+import MultiSelectQuestion from './MultiSelectQuestion'
 import FillInBlankQuestion from './FillInBlankQuestion'
 import OrderingQuestion from './OrderingQuestion'
 import AudioButton from './AudioButton'
@@ -31,6 +32,14 @@ export default function QuestionRenderer({ question, onAnswer, feedback, showHin
             onAnswer={onAnswer}
             feedback={feedback}
             showHint={showHint}
+          />
+        )
+      case 'multiSelect':
+        return (
+          <MultiSelectQuestion
+            question={question}
+            onAnswer={onAnswer}
+            feedback={feedback}
           />
         )
       case 'multipleChoice':
@@ -184,7 +193,7 @@ function QuestionVisual({ question, moduleId }) {
     )
   }
 
-  // Workplace Words: show SVG visual if question has an image field
+  // Workplace Words: show SVG visual if question has an image field (SVG key)
   if (moduleId === 'workplaceWords' && question.image) {
     const Visual = WORKPLACE_VISUALS[question.image]
     if (Visual) {
@@ -194,6 +203,21 @@ function QuestionVisual({ question, moduleId }) {
         </div>
       )
     }
+  }
+
+  // Direct photo — any module can use image: "/assets/wsq/photo.jpg"
+  // Only used when it's a path (starts with /) not an SVG key
+  if (question.image && question.image.startsWith('/')) {
+    return (
+      <div className="mb-5 flex justify-center">
+        <img
+          src={question.image}
+          alt="Question visual"
+          className="rounded-2xl max-h-52 w-full object-contain"
+          style={{ background: 'var(--color-bg)' }}
+        />
+      </div>
+    )
   }
 
   // Fallback: no visual

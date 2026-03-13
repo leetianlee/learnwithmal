@@ -113,8 +113,19 @@ export default function MultipleChoiceQuestion({ question, onAnswer, feedback, s
             >
               {OPTION_LETTERS[i]}
             </span>
-            {/* Option text */}
-            <span className="text-left flex-1">{option}</span>
+            {/* Option content — text only, or image + text if optionImages provided */}
+            {question.optionImages && question.optionImages[option] ? (
+              <span className="text-left flex-1 flex flex-col gap-1.5">
+                <img
+                  src={question.optionImages[option]}
+                  alt={option}
+                  className="w-full max-h-28 object-cover rounded-xl"
+                />
+                <span className="text-sm">{option}</span>
+              </span>
+            ) : (
+              <span className="text-left flex-1">{option}</span>
+            )}
           </button>
         )
       })}
