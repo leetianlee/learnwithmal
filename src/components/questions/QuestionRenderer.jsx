@@ -11,7 +11,7 @@ import SpeakerIndicator from '../visuals/SpeakerIndicator'
 import ScheduleTable from '../visuals/ScheduleTable'
 import { WORKPLACE_VISUALS } from '../visuals/WorkplaceVisuals'
 
-export default function QuestionRenderer({ question, onAnswer, feedback, showHint, moduleId }) {
+export default function QuestionRenderer({ question, onAnswer, feedback, showHint, moduleId, onDismissHint }) {
   if (!question) return null
   const audioText = question.audio || question.question
 
@@ -23,6 +23,7 @@ export default function QuestionRenderer({ question, onAnswer, feedback, showHin
             question={question}
             onAnswer={onAnswer}
             feedback={feedback}
+            onDismissHint={onDismissHint}
           />
         )
       case 'fillInBlank':

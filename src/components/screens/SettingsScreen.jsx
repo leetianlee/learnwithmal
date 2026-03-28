@@ -75,17 +75,24 @@ export default function SettingsScreen() {
       <Card className="mb-4">
         <h2 className="font-bold text-lg mb-3">Session Length</h2>
         <div className="flex gap-3">
-          {[15, 30, 45].map(mins => (
+          {[
+            { mins: 15, questions: '~23 questions' },
+            { mins: 30, questions: '~45 questions' },
+            { mins: 45, questions: '~68 questions' },
+          ].map(({ mins, questions }) => (
             <button
               key={mins}
               onClick={() => updateSetting('sessionMinutes', mins)}
-              className={`flex-1 py-3 rounded-xl font-semibold transition-colors ${
+              className={`flex-1 py-3 rounded-xl font-semibold transition-colors flex flex-col items-center gap-0.5 ${
                 settings.sessionMinutes === mins
                   ? 'bg-[var(--color-primary)] text-white'
                   : 'bg-[var(--color-bg)] text-[var(--color-text)]'
               }`}
             >
-              {mins} min
+              <span>{mins} min</span>
+              <span className={`text-xs font-medium ${
+                settings.sessionMinutes === mins ? 'opacity-80' : 'text-[var(--color-text-light)]'
+              }`}>{questions}</span>
             </button>
           ))}
         </div>

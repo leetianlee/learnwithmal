@@ -29,6 +29,7 @@ export default function PracticeScreen() {
   const [loading, setLoading] = useState(true)
   const [lastAnswerCorrect, setLastAnswerCorrect] = useState(null)
   const [showBreak, setShowBreak] = useState(false)
+  const [hintKey, setHintKey] = useState(0)
 
   useEffect(() => {
     async function loadQuestions() {
@@ -71,7 +72,12 @@ export default function PracticeScreen() {
     setShowHint(false)
     const timer = setTimeout(() => setShowHint(true), SESSION.HINT_TIMEOUT_MS)
     return () => clearTimeout(timer)
-  }, [currentIndex, feedback, questions])
+  }, [currentIndex, feedback, questions, hintKey])
+
+  // Called by question components when user interacts — resets the hint timer
+  const handleDismissHint = useCallback(() => {
+    setHintKey(k => k + 1)
+  }, [])
 
   // TTS auto-read: speak question when it appears (if enabled)
   useEffect(() => {
@@ -276,6 +282,7 @@ export default function PracticeScreen() {
               feedback={feedback}
               showHint={showHint}
               moduleId={moduleId}
+              onDismissHint={handleDismissHint}
             />
           </div>
 

@@ -5,7 +5,7 @@ import { computeAchievements } from '../../data/achievements'
 import { computeStickers } from '../../data/stickers'
 import { MODULES } from '../../data/moduleMetadata'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
-import { Flame, Trophy, Gift, ClipboardList, Calculator, BookOpen, Building2, MessageSquare, Sparkles, CheckCircle, ArrowRight } from 'lucide-react'
+import { Flame, Trophy, Gift, ClipboardList, Calculator, BookOpen, Building2, MessageSquare, Sparkles, CheckCircle, ArrowRight, Settings, Users } from 'lucide-react'
 
 /** Compute average level per subject and return a gentle encouragement message */
 function getEncouragement(progress) {
@@ -86,7 +86,7 @@ export default function HomeScreen() {
           >
             <Trophy size={18} className="text-[var(--color-primary)] group-hover:text-white" />
             <span className="text-sm font-bold text-[var(--color-primary)] group-hover:text-white">
-              {earnedCount}
+              {earnedCount} achievements
             </span>
           </button>
           <button
@@ -95,7 +95,7 @@ export default function HomeScreen() {
           >
             <Gift size={18} className="text-[var(--color-incorrect)] group-hover:text-white" />
             <span className="text-sm font-bold text-[var(--color-incorrect)] group-hover:text-white">
-              {stickerCount}
+              {stickerCount} stickers
             </span>
           </button>
         </div>
@@ -270,17 +270,19 @@ export default function HomeScreen() {
       </div>
 
       {/* Footer Navigation */}
-      <div className="mt-auto flex justify-center gap-4 pb-4">
+      <div className="mt-auto flex justify-center gap-3 pb-4">
         <button
           onClick={() => navigate('/settings')}
-          className="text-sm text-[var(--color-text-light)] hover:text-[var(--color-primary)] transition-colors font-semibold px-3 py-2 rounded-lg"
+          className="flex items-center gap-2 bg-white shadow-card hover:shadow-card-hover text-[var(--color-text-light)] hover:text-[var(--color-primary)] transition-all active:scale-95 font-semibold px-5 py-3 rounded-2xl"
         >
+          <Settings size={18} />
           Settings
         </button>
         <button
           onClick={() => navigate('/parent')}
-          className="text-sm text-[var(--color-text-light)] hover:text-[var(--color-primary)] transition-colors font-semibold px-3 py-2 rounded-lg"
+          className="flex items-center gap-2 bg-white shadow-card hover:shadow-card-hover text-[var(--color-text-light)] hover:text-[var(--color-primary)] transition-all active:scale-95 font-semibold px-5 py-3 rounded-2xl"
         >
+          <Users size={18} />
           Parent
         </button>
       </div>

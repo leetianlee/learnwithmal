@@ -10,7 +10,7 @@ function shuffleArray(arr) {
   return a
 }
 
-export default function OrderingQuestion({ question, onAnswer, feedback }) {
+export default function OrderingQuestion({ question, onAnswer, feedback, onDismissHint }) {
   // Shuffle words once per question
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const shuffled = useMemo(() => shuffleArray(question.words), [question.id])
@@ -22,14 +22,23 @@ export default function OrderingQuestion({ question, onAnswer, feedback }) {
 
   const handleTapAvailable = (word, index) => {
     if (feedback) return
+    onDismissHint?.()
     setSelectedWords(prev => [...prev, word])
     setAvailableWords(prev => prev.filter((_, i) => i !== index))
   }
 
   const handleTapSelected = (word, index) => {
     if (feedback) return
+    onDismissHint?.()
     setAvailableWords(prev => [...prev, word])
     setSelectedWords(prev => prev.filter((_, i) => i !== index))
+  }
+
+  const handleClearAll = () => {
+    if (feedback) return
+    onDismissHint?.()
+    setAvailableWords(prev => [...prev, ...selectedWords])
+    setSelectedWords([])
   }
 
   const handleCheck = () => {
@@ -82,9 +91,19 @@ export default function OrderingQuestion({ question, onAnswer, feedback }) {
     <div className="w-full">
       {/* Sentence building area */}
       <div className="mb-5">
-        <p className="text-xs font-semibold text-[var(--color-text-light)] mb-2 uppercase tracking-wide">
-          Your sentence:
-        </p>
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-xs font-semibold text-[var(--color-text-light)] uppercase tracking-wide">
+            Your sentence:
+          </p>
+          {selectedWords.length > 0 && !feedback && (
+            <button
+              onClick={handleClearAll}
+              className="text-xs font-semibold text-[var(--color-text-light)] hover:text-[var(--color-incorrect)] transition-colors px-2 py-0.5 rounded-lg"
+            >
+              Clear all
+            </button>
+          )}
+        </div>
         <div
           className="min-h-[56px] rounded-2xl p-3 flex flex-wrap gap-2 items-center transition-all"
           style={{
