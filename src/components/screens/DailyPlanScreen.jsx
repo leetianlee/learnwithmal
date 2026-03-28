@@ -4,6 +4,7 @@ import { useProgress } from '../../context/ProgressContext'
 import { useSettings } from '../../context/SettingsContext'
 import { getAllModules } from '../../data/moduleMetadata'
 import MalcolmAvatar from '../visuals/MalcolmAvatar'
+import ModuleIcon from '../visuals/ModuleIcon'
 
 /**
  * Daily Plan Screen — auto-generates a balanced session of 3 modules.
@@ -164,10 +165,10 @@ export default function DailyPlanScreen() {
 
                 {/* Module icon */}
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{ background: accentBg }}
                 >
-                  {mod.icon}
+                  <ModuleIcon name={mod.icon} size={24} />
                 </div>
 
                 {/* Info */}

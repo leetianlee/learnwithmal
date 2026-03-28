@@ -34,7 +34,12 @@ export default function OrderingQuestion({ question, onAnswer, feedback }) {
 
   const handleCheck = () => {
     if (feedback || !allPlaced) return
-    const sentence = selectedWords.join(' ')
+    // Auto-capitalise the first word so "he likes rice" matches "He likes rice"
+    const words = [...selectedWords]
+    if (words.length > 0) {
+      words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1)
+    }
+    const sentence = words.join(' ')
     onAnswer(sentence)
   }
 
@@ -58,8 +63,8 @@ export default function OrderingQuestion({ question, onAnswer, feedback }) {
       }
     }
 
-    // Incorrect: show which words are in the right position
-    if (index < correctWords.length && word === correctWords[index]) {
+    // Incorrect: show which words are in the right position (case-insensitive)
+    if (index < correctWords.length && word.toLowerCase() === correctWords[index].toLowerCase()) {
       return {
         bg: 'var(--color-correct-light)',
         border: '2px solid var(--color-correct)',
