@@ -21,6 +21,23 @@
   Tailwind CSS 4 utilities. Unlayered CSS beats all @layer CSS.
 */
 
+/* Dark mode overrides — applied when .dark is on <html> */
+.dark {
+  --color-bg: #1E1E24;
+  --color-card: #2A2A32;
+  --color-primary: #4AABB3;
+  --color-primary-dark: #3A8A91;
+  --color-primary-light: #1A3A3D;
+  --color-correct: #6BBF7B;
+  --color-correct-light: #1A3A1F;
+  --color-incorrect: #E8A838;
+  --color-incorrect-light: #3A2D10;
+  --color-text: #F0EFED;
+  --color-text-light: #A8A8B0;
+  --color-disabled: #4A4A52;
+  --color-bg-hover: #2E2E38;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

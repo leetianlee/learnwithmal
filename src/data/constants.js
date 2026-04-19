@@ -49,6 +49,7 @@ export const DEFAULT_SETTINGS = {
   suggestedModuleEnabled: true,
   sessionMinutes: 30,
   parentPin: '1234',
+  darkMode: false,
 }
 
 export const DEFAULT_MODULE_PROGRESS = {

@@ -45,6 +45,15 @@ export default function SettingsScreen() {
       </div>
 
       <Card className="mb-4">
+        <h2 className="font-bold text-lg mb-2">Display</h2>
+        <Toggle
+          label="Dark mode"
+          value={settings.darkMode}
+          onChange={(v) => updateSetting('darkMode', v)}
+        />
+      </Card>
+
+      <Card className="mb-4">
         <h2 className="font-bold text-lg mb-2">Audio</h2>
         <Toggle
           label="Read questions aloud"

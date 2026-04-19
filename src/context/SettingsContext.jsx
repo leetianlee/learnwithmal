@@ -13,6 +13,14 @@ export function SettingsProvider({ children }) {
     saveData('settings', settings)
   }, [settings])
 
+  useEffect(() => {
+    if (settings.darkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [settings.darkMode])
+
   const updateSetting = (key, value) => {
     setSettings(prev => ({ ...prev, [key]: value }))
   }
