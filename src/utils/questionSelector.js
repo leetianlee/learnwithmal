@@ -17,10 +17,10 @@ export const selectSessionQuestions = (allQuestions, currentLevel, maxLevel = 10
     Math.round((sessionMinutes * 60) / AVG_SECONDS_PER_QUESTION) // duration-based
   )
 
-  // If the entire bank fits within the session target, serve all questions shuffled.
+  // If the bank is small (≤ 30 questions), serve all questions shuffled.
   // This ensures small exam-prep modules (e.g. WSQ Guestrooms, 24 questions) always
   // show every question regardless of session duration setting.
-  if (allQuestions.length <= totalTarget) {
+  if (allQuestions.length <= 30) {
     return shuffleAndPick(allQuestions, allQuestions.length)
   }
 
