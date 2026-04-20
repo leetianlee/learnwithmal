@@ -380,16 +380,16 @@
     ],
     "correctAnswer": [
       "switch on 1 bedside light",
-      "set the air-con temperature to 25°C"
+      "replace the used guest amenities"
     ],
-    "hint": "Turndown service creates a soft, comfortable sleeping atmosphere. Think: gentle warm light, and a comfortable temperature.",
+    "hint": "Turndown service creates a soft, welcoming atmosphere. Think: gentle warm light, and fresh amenities for the guest.",
     "tags": [
       "turndown",
       "bedside-light",
-      "air-con",
+      "amenities",
       "pleasant-environment"
     ],
-    "explanation": "For a pleasant turndown environment, switch on 1 bedside light (soft and relaxing — not both lights) and set the air-con temperature to 25°C for a comfortable sleeping temperature.",
+    "explanation": "For a pleasant turndown environment, switch on 1 bedside light (soft and relaxing — not both lights) and replace the used guest amenities so everything is fresh and ready for the guest.",
     "optionImages": {
       "switch on 1 bedside light": "/assets/wsq/q16_a.jpg",
       "switch on both bedside lights": "/assets/wsq/q16_b.jpg",
